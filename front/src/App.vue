@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <h1>{{ msg }}</h1>
+    <ul>
+      <li v-for="talk in talks">{{talk.id}} - {{talk.name}}</li>
+    </ul>
   </div>
 </template>
 
@@ -11,14 +14,18 @@ export default {
   name: 'app',
   data() {
     return {
-      msg: 'Horario StarsConf 2017'
+      msg: 'Horario StarsConf 2017',
+      talks: []
     }
   },
   methods: {
     loadSchedule() {
       console.log('Load schedule');
-      axios.get('http://localhost:8000/graphql')
-        .then((response) => console.log(response));
+      axios.get('http://localhost:8000/graphql?query={allTalks{id name}}')
+        .then((response) => {
+          console.log(response);
+          this.talks = response.data.data.allTalks;
+        });
     }
   },
   mounted() {
@@ -47,7 +54,6 @@ ul {
 }
 
 li {
-  display: inline-block;
   margin: 0 10px;
 }
 
