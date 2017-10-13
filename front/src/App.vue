@@ -1,30 +1,34 @@
 <template>
   <div id="app">
     <h1>{{ msg }}</h1>
+    <p v-if="loading">Loading...</p>
     <ul>
-      <li v-for="talk in talks">{{talk.id}} - {{talk.name}}</li>
+      <li v-for="talk in talks">{{talk.timeSlot.date}} {{talk.timeSlot.start}} - {{talk.timeSlot.end}} {{talk.id}} - {{talk.name}} ({{talk.speaker && talk.speaker.name}})</li>
     </ul>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import ALL_TALKS from './constants';
 
 export default {
   name: 'app',
   data() {
     return {
       msg: 'Horario StarsConf 2017',
+      loading: true,
       talks: []
     }
   },
   methods: {
     loadSchedule() {
       console.log('Load schedule');
-      axios.get('http://localhost:8000/graphql?query={allTalks{id name}}')
+      axios.get(`http://localhost:8000/graphql?query=${ALL_TALKS}`)
         .then((response) => {
           console.log(response);
           this.talks = response.data.data.allTalks;
+          this.loading = false;
         });
     }
   },
