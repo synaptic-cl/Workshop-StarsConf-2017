@@ -1,0 +1,63 @@
+date|start|name|speaker|room|category
+2017-11-03|08:00|Registro + Coffee
+2017-11-03|09:15|Bienvenida
+2017-11-03|09:25|Keynote 1 - Web|Una Kravets||Web
+2017-11-03|10:25|Keynote 2 - DevOps|Donovan Brown||DevOps
+2017-11-03|11:25|Coffee Break
+2017-11-03|11:45|APIs como Producto|Fausto de la Torre|dos|Web & Mobile
+2017-11-03|11:45|De Chile a Silicon Valley: Mitos, realidades y desafíos|Alvaro Echeverría|principal
+2017-11-03|11:45|CodificaciÃ3n de Caracteres|José Urzúa|chica|Developer Tools
+2017-11-03|11:45|Design Sprints|Continuum|talleres|Taller
+2017-11-03|12:25|Microservicios con Akka y Scala|Ubaldo Taladriz|dos|Web & Mobile
+2017-11-03|12:25|(Sponsor Platium)||principal
+2017-11-03|12:25|Go: Pasado, Presente y Futuro|Jairo Da Silva|chica|Developer Tools
+2017-11-03|13:00|VR/AR en Dispositivos Móviles|Chihau Chau|dos|Web & Mobile
+2017-11-03|13:00|Behind the AI Curtain: Designing for User Trust in Artificial Intelligence and Machine Learning|Crystal Yan|principal|Data Analysis & Visualization
+2017-11-03|13:00|Go Mobile with C#, Visual Studio, and Xamarin|James Montemagno|chica|Developer Tools
+2017-11-03|13:30|Almuerzo
+2017-11-03|15:00|Design Sprints en el mundo Enterprise|Ricardo Alfaro|dos|UX & Design
+2017-11-03|15:00|¿Sabemos por qué estamos Desarrollando Software?|Agustín Villena|principal
+2017-11-03|15:00|TDDD: Test Driven Development for Docker|Fausto Castañeda|chica|Cloud & DevOps
+2017-11-03|15:00|8 hours technical onboarding for agile teams|Synaptic|talleres|Taller
+2017-11-03|15:40|La importancia del Why en el diseño de productos|Felipe Funes y Alberto Marcías|dos|UX & Design
+2017-11-03|15:40|(Sponsor Platinum)||principal
+2017-11-03|15:40|Instalacion y manejo de kubernetes con Juju|Felipe Reyes|chica|Cloud & DevOps
+2017-11-03|16:20|MIWOM. Cómo la UX salvó un producto|Gustavo Soto Miño|dos|UX & Design
+2017-11-03|16:20|Esos raros lenguajes nuevos|Eduardo Díaz|principal|Developer Tools
+2017-11-03|16:20|El caso Preguntados: Manteniendo 25 millones de usuarios diarios|Martín Dominguez|chica|Cloud & DevOps
+2017-11-03|16:50|Coffee Break
+2017-11-03|17:15|Lightning Talks
+2017-11-03|17:45|Business Agility - Continuous Design to Continuous Delivery|Rebecca Parsons
+2017-11-03|18:45|Keynote 4|Russ Unger
+2017-11-03|19:45|Drink-Up
+2017-11-04|08:00|Acreditación + Coffee
+2017-11-04|09:00|Keynote 5: Data Visualization|Noah Iliinsky||Visualization
+2017-11-04|10:00|Keynote 6: Startups & Innovation|Daniel May||Startups & Innovation
+2017-11-04|11:00|Coffee Break
+2017-11-04|11:30|Cómo ser Data Scientist y no morir en el intento|Eduardo Graells-Garrido|dos|Data Analysis & Visualization
+2017-11-04|11:30|Bias, Uncovered: Irrational by Design|Crystal Yan|principal|UX & Design
+2017-11-04|11:30|¿Qué son los robot-advisors?|Andres Marinkovic|chica|Startups & Innovation
+2017-11-04|11:30|Platform As A Service|Linets|talleres|Taller
+2017-11-04|12:10|Obtención, análisis y visualización de datos espaciales usando Python + Jupyter + Pandas|Rodrigo Culagovski|dos|Data Analysis & Visualization
+2017-11-04|12:10|(Sponsor Platium)||principal
+2017-11-04|12:10|Libre||chica
+2017-11-04|12:50|What can we learn from 750 billion GitHub events and 42 TB of code|Felipe Hoffa|dos|Data Analysis & Visualization
+2017-11-04|12:50|Guaranteed Successful Design|Noah Illinsky|principal
+2017-11-04|12:50|Desmitificando Chileconvalley una mirada desde el Venture Capital|Ricardo Diaz|chica|Startups & Innovation
+2017-11-04|13:20|Almuerzo
+2017-11-04|15:00|Detectem: enumerando software para vulnerar sistemas|Claudio Salazar|dos
+2017-11-04|15:00|IoT inteligente con AndroidThings y Machine Learning|Chihau Chau|principal|Web & Mobile
+2017-11-04|15:00|Si odio hablar en público: ¿Por qué lo sigo haciendo?|Francisco Díaz|chica|People, Team & Culture
+2017-11-04|15:00|Libre||talleres
+2017-11-04|15:40|Cómo empezar una carrera de kernel hacker|Davidlohr Bueso|dos
+2017-11-04|15:40|Network Engineering 2.0|Alejandro Salinas|principal|Cloud & DevOps
+2017-11-04|15:40|Evitemos hacer daño. Ética en la ingeniería de software|Leonardo Graterol|chica|People, Team & Culture
+2017-11-04|16:20|(Sponsor Platium)||dos
+2017-11-04|16:20|(Sponsor Platium)||principal
+2017-11-04|16:20|Cómo convertirse en nómada digital|Rubén Torres|chica|People, Team & Culture
+2017-11-04|16:50|Coffee Break
+2017-11-04|17:15|Lightning Talks
+2017-11-04|17:45|Libre
+2017-11-04|18:45|Libre
+2017-11-04|19:45|Cierre
+2017-11-04|19:50|Drink-Up

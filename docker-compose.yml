@@ -1,0 +1,16 @@
+version: '2'
+services:
+    back:
+        build: back
+        volumes:
+            - ./back:/src
+        ports:
+            - 8000:8000
+    front:
+        build: front
+        volumes:
+            - ./front:/src
+            - /src/node_modules
+        ports:
+            - 8080:8080
+
