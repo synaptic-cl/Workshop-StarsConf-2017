@@ -2,13 +2,17 @@
   <div id="app">
     <h1>{{ msg }}</h1>
     <p v-if="loading">Cargando Información del Evento...</p>
-    <!-- 
-      <div class="day" v-for="day in days">
-        <Schedule :time-slots="timeSlotsOfDay(day)" :room-names="['Sala 2', 'Sala Principal', 'Sala Chica', 'Sala Talleres']" :room-ids="['DOS', 'PRINCIPAL', 'CHICA', 'TALLERES']" :grid="grid" :title="day">
-                  </Schedule>
-      </div> -->
-    <Timeline :talks="this.talks"></Timeline>
-    <!-- <pre>{{$data}}</pre> -->
+    <b-container class="bv-example-row">
+      <b-row>
+        <b-col>
+          <Timeline :talks="this.firstDayTalks" title="Viernes 03"></Timeline>
+        </b-col>
+        <b-col>
+          <Timeline :talks="this.lastDayTalks" title="Sábado 04"></Timeline>
+        </b-col>
+      </b-row>
+    </b-container>
+
   </div>
 </template>
 
@@ -26,6 +30,8 @@ export default {
       loading: true,
       timeSlots: {},
       talks: [],
+      firstDayTalks: [],
+      lastDayTalks: [],
       days: [],
       grid: {},
     }
@@ -74,8 +80,13 @@ export default {
     loadSchedule() {
       axios.get(`http://localhost:8000/graphql?query=${ALL_TALKS}`)
         .then((response) => {
-          console.log(response);
           this.talks = response.data.data.allTalks;
+          this.firstDayTalks = this.talks.filter((x) => {
+            return x.timeSlot.date == "2017-11-03";
+          });
+          this.lastDayTalks = this.talks.filter((x) => {
+            return x.timeSlot.date == "2017-11-04";
+          })
         })
     },
     setScrollBehavior() {

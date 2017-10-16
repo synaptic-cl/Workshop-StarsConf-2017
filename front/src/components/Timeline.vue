@@ -11,15 +11,14 @@ import TimelineBlock from './TimelineBlock.vue';
 export default {
     data() {
         return {
-
         }
     },
     props: [
-        'talks'
+        'talks', 'title'
     ],
     components: {
         TimelineBlock
-    }
+    },
 }
 </script>
 
