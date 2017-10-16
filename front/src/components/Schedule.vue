@@ -1,13 +1,14 @@
 <template>
   <div class="schedule">
     <div class="row">
-      <div></div>
-      <div v-for="room in roomIds">
-        {{room}}
+      <h2>{{title}}</h2>
+      <div>Hora</div>
+      <div v-for="(room, index) in roomIds">
+        {{roomNames[index]}}
       </div>
     </div>
     <div class="row" v-for="slot in orderedTimeSlots()">
-        <div>{{slot.date}} {{slot.start}}-{{slot.end}}</div>
+        <div>{{slot.start}}-{{slot.end}}</div>
         <div class="talk" v-for="room in roomIds">
           <p>{{grid[slot.id] && grid[slot.id][room] && grid[slot.id][room].speaker}}</p>
           <p class="name">{{grid[slot.id] && grid[slot.id][room] && grid[slot.id][room].name}}</p>
@@ -20,7 +21,7 @@
 
 export default {
   name: 'schedule',
-  props: ['roomNames', 'roomIds', 'timeSlots', 'grid'],
+  props: ['title', 'roomNames', 'roomIds', 'timeSlots', 'grid'],
   data() {
     return {
     }
@@ -48,6 +49,10 @@ export default {
 
 
 <style>
+.schedule {
+  clear: both;
+}
+
 .row div {
   border: 1px solid black;
   float: left;
