@@ -1,23 +1,22 @@
 <template>
   <div id="app">
     <h1>{{ msg }}</h1>
-    <p v-if="loading">Loading...</p>
-    <div class="day" v-for="day in days">
-      <Schedule :time-slots="timeSlotsOfDay(day)"
-        :room-names="['Sala 2', 'Sala Principal', 'Sala Chica', 'Sala Talleres']"
-        :room-ids="['DOS', 'PRINCIPAL', 'CHICA', 'TALLERES']"
-        :grid="grid"
-        :title="day"
-        >
-      </Schedule>
-    </div>
+    <p v-if="loading">Cargando Información del Evento...</p>
+    <!-- 
+      <div class="day" v-for="day in days">
+        <Schedule :time-slots="timeSlotsOfDay(day)" :room-names="['Sala 2', 'Sala Principal', 'Sala Chica', 'Sala Talleres']" :room-ids="['DOS', 'PRINCIPAL', 'CHICA', 'TALLERES']" :grid="grid" :title="day">
+                  </Schedule>
+      </div> -->
+    <Timeline :talks="this.talks"></Timeline>
+    <!-- <pre>{{$data}}</pre> -->
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 import ALL_TALKS from './constants';
-import Schedule from './components/Schedule.vue';
+import Timeline from './components/Timeline.vue';
+// import Schedule from './components/Schedule.vue';
 
 export default {
   name: 'app',
@@ -32,53 +31,75 @@ export default {
     }
   },
   components: {
-    Schedule: Schedule,
+    Timeline,
   },
   methods: {
+    // loadSchedule() {
+    //   console.log('Load schedule');
+    //   let days = new Map();
+    //   axios.get(`http://localhost:8000/graphql?query=${ALL_TALKS}`)
+    //     .then((response) => {
+    //       console.log(response);
+    //       response.data.data.allTalks.forEach((talk) => {
+    //         if (talk.speaker) {
+    //           talk.speaker = talk.speaker.name;
+    //         }
+
+    //         let date = talk.timeSlot.date;
+    //         days.set(date, "");
+    //         this.days = Array.from(days.keys());
+    //         this.talks.push(talk);
+    //       });
+
+    //       this.talks.forEach((talk) => {
+    //         this.timeSlots[talk.timeSlot.id] = talk.timeSlot;
+    //         if (!this.grid[talk.timeSlot.id]) {
+    //           this.grid[talk.timeSlot.id] = {};
+    //         }
+
+    //         this.grid[talk.timeSlot.id][talk.room] = talk;
+    //       })
+    //       this.loading = false;
+    //     });
+    // },
+    // timeSlotsOfDay(day) {
+    //   let slots = []
+    //   Object.values(this.timeSlots).forEach(slot => {
+    //     if (slot.date === day) {
+    //       slots.push(slot);
+    //     }
+    //   });
+    //   return slots;
+    // }
     loadSchedule() {
-      console.log('Load schedule');
-      let days = new Map();
       axios.get(`http://localhost:8000/graphql?query=${ALL_TALKS}`)
         .then((response) => {
-          response.data.data.allTalks.forEach((talk) => {
-            if(talk.speaker) {
-              talk.speaker = talk.speaker.name;
-            }
-
-            let date = talk.timeSlot.date;
-            days.set(date, "");
-            this.days = Array.from(days.keys());
-            this.talks.push(talk);
-          });
-
-          this.talks.forEach((talk) => {
-            this.timeSlots[talk.timeSlot.id] = talk.timeSlot;
-            if(!this.grid[talk.timeSlot.id]){
-              this.grid[talk.timeSlot.id] = {};
-            }
-
-            this.grid[talk.timeSlot.id][talk.room] = talk;
-          })
-          this.loading = false;
-        });
+          console.log(response);
+          this.talks = response.data.data.allTalks;
+        })
     },
-    timeSlotsOfDay(day) {
-      let slots = []
-      Object.values(this.timeSlots).forEach(slot => {
-        if(slot.date === day){
-          slots.push(slot);
-        }
+    setScrollBehavior() {
+      $(window).on('scroll', function() {
+        $timeline_block.each(function() {
+          if ($(this).offset().top <= $(window).scrollTop() + $(window).height() * 0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden')) {
+            $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+          }
+        });
       });
-      return slots;
     }
   },
   mounted() {
     this.loadSchedule();
+    //this.setScrollBehavior();
   }
 }
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700");
+@import url("./assets/vertical-timeline/css/reset.css");
+@import url("./assets/vertical-timeline/css/style.css");
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -88,7 +109,8 @@ export default {
   margin-top: 60px;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 
@@ -103,5 +125,49 @@ li {
 
 a {
   color: #42b983;
+}
+
+#cd-timeline {
+  position: relative;
+  padding: 2em 0;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+#cd-timeline::before {
+  /* this is the vertical line */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 18px;
+  height: 100%;
+  width: 4px;
+  background: #d7e4ed;
+}
+
+
+.cssanimations .cd-timeline-img.is-hidden {
+  visibility: hidden;
+}
+
+.cssanimations .cd-timeline-img.bounce-in {
+  visibility: visible;
+  animation: cd-bounce-1 0.6s;
+}
+
+@keyframes cd-bounce-1 {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 </style>
