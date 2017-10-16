@@ -9,7 +9,7 @@
     <div class="row" v-for="slot in orderedTimeSlots()">
         <div>{{slot.date}} {{slot.start}}-{{slot.end}}</div>
         <div class="talk" v-for="room in roomIds">
-          <p>{{grid[slot.id] && grid[slot.id][room] && grid[slot.id][room].speaker && grid[slot.id][room].speaker.name}}</p>
+          <p>{{grid[slot.id] && grid[slot.id][room] && grid[slot.id][room].speaker}}</p>
           <p class="name">{{grid[slot.id] && grid[slot.id][room] && grid[slot.id][room].name}}</p>
         </div>
     </div>

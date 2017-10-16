@@ -36,12 +36,19 @@ export default {
       axios.get(`http://localhost:8000/graphql?query=${ALL_TALKS}`)
         .then((response) => {
           console.log(response);
-          this.talks = response.data.data.allTalks;
+          this.talks = response.data.data.allTalks.map((talk) => {
+            if(talk.speaker) {
+              talk.speaker = talk.speaker.name;
+            }
+            return talk;
+          });
+
           this.talks.forEach((talk) => {
             this.timeSlots[talk.timeSlot.id] = talk.timeSlot;
             if(!this.grid[talk.timeSlot.id]){
               this.grid[talk.timeSlot.id] = {};
             }
+
             this.grid[talk.timeSlot.id][talk.room] = talk;
           })
           this.loading = false;
