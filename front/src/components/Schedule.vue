@@ -61,10 +61,11 @@ export default {
 
 .row .cell {
   border: 1px solid black;
+  padding: 5px;
   float: left;
   box-sizing: border-box;
   width: 17%;
-  height: 120px;
+  height: 130px;
 }
 
 .row .cell.full {
