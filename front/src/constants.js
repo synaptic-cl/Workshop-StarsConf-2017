@@ -7,6 +7,7 @@ const ALL_TALKS = `
       name
     }
     timeSlot {
+      id
       date
       start
       end

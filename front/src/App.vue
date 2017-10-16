@@ -2,15 +2,19 @@
   <div id="app">
     <h1>{{ msg }}</h1>
     <p v-if="loading">Loading...</p>
-    <ul>
-      <li v-for="talk in talks">{{talk.timeSlot.date}} {{talk.timeSlot.start}} - {{talk.timeSlot.end}} {{talk.id}} - {{talk.name}} ({{talk.speaker && talk.speaker.name}})</li>
-    </ul>
+    <Schedule :time-slots="timeSlots"
+      :room-names="['Sala 2', 'Sala Principal', 'Sala Chica', 'Sala Talleres']"
+      :room-ids="['DOS', 'PRINCIPAL', 'CHICA', 'TALLERES']"
+      :grid="grid"
+      >
+    </Schedule>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 import ALL_TALKS from './constants';
+import Schedule from './components/Schedule.vue';
 
 export default {
   name: 'app',
@@ -18,8 +22,13 @@ export default {
     return {
       msg: 'Horario StarsConf 2017',
       loading: true,
-      talks: []
+      timeSlots: {},
+      talks: [],
+      grid: {},
     }
+  },
+  components: {
+    Schedule: Schedule,
   },
   methods: {
     loadSchedule() {
@@ -28,6 +37,13 @@ export default {
         .then((response) => {
           console.log(response);
           this.talks = response.data.data.allTalks;
+          this.talks.forEach((talk) => {
+            this.timeSlots[talk.timeSlot.id] = talk.timeSlot;
+            if(!this.grid[talk.timeSlot.id]){
+              this.grid[talk.timeSlot.id] = {};
+            }
+            this.grid[talk.timeSlot.id][talk.room] = talk;
+          })
           this.loading = false;
         });
     }
