@@ -1,10 +1,24 @@
 <template>
-  <header>
-    <h1>Horario StarsConf 2017
-      <i class="fa fa-calendar" aria-hidden="true"></i>
-    </h1>
-  </header>
+  <div>
+    <header>
+      <h1>Horario StarsConf 2017
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+      </h1>
+    </header>
+    <clock></clock>
+  </div>
 </template>
+
+<script>
+import Clock from './Clock/Clock.vue'
+
+export default {
+  name: 'appheader',
+  components: {
+    clock: Clock
+  }
+}
+</script>
 
 <style scope>
 header {

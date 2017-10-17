@@ -18,7 +18,6 @@ export default {
       addMode: false,
     }
   },
-
   apollo: {
     tasks: {
       query: TASKS_ALL,
@@ -26,7 +25,7 @@ export default {
         return allTalks
       },
     },
-  }
+  },
 }
 </script>
 
