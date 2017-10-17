@@ -1,9 +1,5 @@
 <template>
   <div class="schedule">
-    <br>
-    <router-link to="/agenda/viernes" active>Programación Viernes</router-link>
-    <router-link to="/agenda/sabado">Programación Sábado</router-link>
-    <router-link to="/nosotros">Acerca de Synaptic</router-link>
     <br><br>
     <p v-if="loading">Cargando Información del Evento...</p>
     <br>
@@ -64,8 +60,8 @@ export default {
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
   text-align: center;
   color: #2c3e50;
 }

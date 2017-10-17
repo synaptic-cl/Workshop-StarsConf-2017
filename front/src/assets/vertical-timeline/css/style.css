@@ -4,8 +4,8 @@ Primary style
 
 -------------------------------- */
 html * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
 }
 
 *,
@@ -18,7 +18,7 @@ html * {
 
 body {
   font-size: 100%;
-  font-family: 'Droid Serif', serif;
+  font-family: "Droid Serif", serif;
   color: #7f8c97;
   background-color: #e9f0f5;
 }
@@ -26,7 +26,7 @@ body {
 a {
   color: #acb7c0;
   text-decoration: none;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 img {
@@ -35,7 +35,7 @@ img {
 
 h1,
 h2 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: bold;
 }
 
@@ -52,7 +52,7 @@ Modules - reusable parts of our design
 }
 .cd-container::after {
   /* clearfix */
-  content: '';
+  content: "";
   display: table;
   clear: both;
 }
@@ -92,7 +92,7 @@ header h1 {
 }
 #cd-timeline::before {
   /* this is the vertical line */
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 18px;
@@ -116,7 +116,7 @@ header h1 {
   margin: 2em 0;
 }
 .cd-timeline-block:after {
-  content: '';
+  content: "";
   display: table;
   clear: both;
 }
@@ -254,7 +254,7 @@ header h1 {
   box-shadow: 0 3px 0 #d7e4ed;
 }
 .cd-timeline-content:after {
-  content: '';
+  content: "";
   display: table;
   clear: both;
 }
@@ -291,7 +291,7 @@ header h1 {
   opacity: 0.7;
 }
 .cd-timeline-content::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 16px;
   right: 100%;
@@ -369,7 +369,9 @@ header h1 {
 
 @media only screen and (min-width: 1170px) {
   /* inverse bounce effect on even content blocks */
-  .cssanimations .cd-timeline-block:nth-child(even) .cd-timeline-content.bounce-in {
+  .cssanimations
+    .cd-timeline-block:nth-child(even)
+    .cd-timeline-content.bounce-in {
     -webkit-animation: cd-bounce-2-inverse 0.6s;
     -moz-animation: cd-bounce-2-inverse 0.6s;
     animation: cd-bounce-2-inverse 0.6s;

@@ -6,6 +6,17 @@
       </h1>
     </header>
     <clock></clock>
+    <ul class="nav nav-tabs nav-fill justify-content-center">
+      <li class="nav-item">
+        <router-link to="/agenda/viernes" active-class="nav-link active">Programación Viernes</router-link>
+      </li>
+      <li class="nav-item">
+        <router-link to="/agenda/sabado" active-class="nav-link active">Programación Sábado</router-link>
+      </li>
+      <li class="nav-item">
+        <router-link to="/nosotros" active-class="nav-link active">Acerca de Synaptic</router-link>
+      </li>
+    </ul>
   </div>
 </template>
 
