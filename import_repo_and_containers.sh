@@ -9,4 +9,4 @@ do
 	docker load < $image
 done
 
-# TODO clone repo
+git clone workshop_repo.bundle -b master workshop
