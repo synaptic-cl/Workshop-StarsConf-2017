@@ -31,7 +31,7 @@ header {
 header h1 {
   color: white;
   font-size: 18px;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 @media only screen and (min-width: 1170px) {

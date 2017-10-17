@@ -33,6 +33,10 @@ module.exports = {
       {
         test: /\.(gql|graphql)$/,
         loader: 'graphql-tag/loader'
+      },
+      {
+        test: /\.css$/,
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
       }
     ]
   },

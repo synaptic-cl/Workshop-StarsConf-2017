@@ -3,7 +3,7 @@
         <br>
         <h2 v-if="title">
             {{title}}</h2>
-        <section id="cd-timeline">
+        <section id="cd-timeline" class="cd-container">
             <TimelineBlock :key="item" v-for="item in talks" :eventData="item"></TimelineBlock>
         </section>
     </div>

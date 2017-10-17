@@ -10,10 +10,7 @@
         <div class="cd-timeline-content">
             <h2>{{eventData.name}}</h2>
             <p v-if="eventData.speaker!=null">Orador: {{eventData.speaker.name}}</p>
-            <p v-else-if="eventData.room='DOS'">Sala 2</p>
-            <p v-else-if="eventData.room='PRINCIPAL'">Sala Principal</p>
-            <p v-else-if="eventData.room='CHICA'">Sala Chica</p>
-            <p v-else-if="eventData.room='TALLERES'">Sala Talleres</p>
+            <p>{{ setRoom }}</p>
             <a href="#0" class="cd-read-more">Más Información</a>
             <span class="cd-date">
                 <strong>Día</strong>: {{eventData.timeSlot.date}}<br>
@@ -29,7 +26,28 @@ export default {
     data() {
         return {}
     },
-    props: ['eventData']
+    props: ['eventData'],
+    computed: {
+        setRoom: function() {
+            let room = ''
+            switch (this.eventData.room) {
+                case 'DOS':
+                    room = 'Sala 2'
+                    break;
+                case 'PRINCIPAL':
+                    room = 'Sala Principal'
+                    break
+                case 'Sala Chica':
+                    room = 'CHICA'
+                case 'TALLERES':
+                    room = 'Sala Talleres'
+                default:
+                    room = '-'
+                    break;
+            }
+            return room
+        }
+    }
 }
 </script>
 

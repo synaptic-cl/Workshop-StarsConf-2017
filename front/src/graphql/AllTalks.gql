@@ -2,15 +2,17 @@ query allSpeakersQuery {
   allTalks {
     id
     name
-    category
     speaker {
-      id
       name
     }
     timeSlot {
       id
+      date
       start
       end
     }
+    room
+    category
+    isPlaceholder
   }
 }
