@@ -2,15 +2,17 @@
     <div>
         <br>
         <h2>{{this.title}}</h2>
-        <section id="cd-timeline">
-            <TimelineBlock :key="item.id" v-for="item in this.talks" :eventData="item"></TimelineBlock>
+        <section id="cd-timeline" class="cd-container">
+            <TimelineBlock :key="item.id" v-for="item in this.fetchData" :eventData="item"></TimelineBlock>
         </section>
+        {{$data}}
     </div>
 </template>
 
 <script>
 
 import TimelineBlock from './TimelineBlock.vue';
+import { mapGetters } from 'vuex';
 
 export default {
     data() {
@@ -23,26 +25,22 @@ export default {
     components: {
         TimelineBlock
     },
-    watch: {
-        '$route'(to, from) {
-            this.dia = to.params.dia;
-            switch (this.dia) {
+    computed: {
+        fetchData() {
+            switch (this.$route.params.dia) {
                 case "viernes":
-                    this.talks = this.$store.state.talksViernes;
-                    this.title = "Programación Día Viernes 03 de Noviembre"
+                    this.title = "Programación Día Viernes 03 de Noviembre";
+                    return this.$store.getters.talksViernes
                     break;
                 case "sabado":
-                    this.talks = this.$store.state.talksSabado;
-                    this.title = "Programación Día Sábado 04 de Noviembre"
+                    this.title = "Programación Día Sábado 04 de Noviembre";
+                    return this.$store.getters.talksSabado
                     break;
                 default:
-                    this.talks = this.$store.state.talksViernes;
-                    this.title = "Programación Día Viernes 03 de Noviembre"
+                    this.title = "No hay data ups!"
+                    return this.$store.state.noData;
             }
         }
-    },
-    route: {
-        canReuse: false
     }
 }
 </script>

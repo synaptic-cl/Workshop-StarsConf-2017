@@ -1,7 +1,7 @@
 <template>
   <div class="schedule">
     <br>
-    <router-link to="/agenda/viernes" active>Programación Viernes</router-link>
+    <router-link to="/agenda/viernes" active exact>Programación Viernes</router-link>
     <router-link to="/agenda/sabado">Programación Sábado</router-link>
     <router-link to="/nosotros">Acerca de Synaptic</router-link>
     <br><br>
@@ -39,8 +39,13 @@ export default {
           return x.timeSlot.date == "2017-11-04";
         })
         this.loading = false;
-        return allTalks
       },
+      result({ data, loader, networkStatus }) {
+        return data
+      },
+      error(error) {
+        console.error('We\'ve got an error!', error)
+      }
     },
   },
   setScrollBehavior() {
