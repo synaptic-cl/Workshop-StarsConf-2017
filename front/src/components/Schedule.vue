@@ -1,6 +1,14 @@
 <template>
   <div class="schedule">
-    <time-line :talks="tasks"></time-line>
+    <h1>{{ msg }}</h1>
+    <br>
+    <router-link to="/agenda/viernes" active>Programación Viernes</router-link>
+    <router-link to="/agenda/sabado">Programación Sábado</router-link>
+    <router-link to="/nosotros">Acerca de Synaptic</router-link>
+    <br><br>
+    <p v-if="loading">Cargando Información del Evento...</p>
+    <br>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -24,10 +32,26 @@ export default {
     tasks: {
       query: TASKS_ALL,
       update({ allTalks }) {
+        this.$store.state.talksViernes = allTalks.filter((x) => {
+          return x.timeSlot.date == "2017-11-03";
+        });
+        this.$store.state.talksSabado = allTalks.filter((x) => {
+          return x.timeSlot.date == "2017-11-04";
+        })
         return allTalks
       },
     },
   },
+  setScrollBehavior() {
+    $(window).on('scroll', function() {
+      $timeline_block.each(function() {
+        if ($(this).offset().top <= $(window).scrollTop() + $(window).height() * 0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden')) {
+          $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+        }
+      });
+    });
+  }
+
 }
 </script>
 

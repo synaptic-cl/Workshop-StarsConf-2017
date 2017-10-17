@@ -41,4 +41,8 @@ body {
   min-height: 100%;
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
+
+.router-link-active {
+  color: red;
+}
 </style>
