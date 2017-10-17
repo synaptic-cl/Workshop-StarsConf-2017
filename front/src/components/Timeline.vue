@@ -1,7 +1,12 @@
 <template>
-    <section id="cd-timeline">
-        <TimelineBlock v-for="item in talks" :eventData="item"></TimelineBlock>
-    </section>
+    <div>
+        <br>
+        <h2 v-if="title">
+            {{title}}</h2>
+        <section id="cd-timeline">
+            <TimelineBlock :key="item" v-for="item in talks" :eventData="item"></TimelineBlock>
+        </section>
+    </div>
 </template>
 
 <script>

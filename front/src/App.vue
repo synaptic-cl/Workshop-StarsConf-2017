@@ -2,17 +2,9 @@
   <div id="app">
     <h1>{{ msg }}</h1>
     <p v-if="loading">Cargando Información del Evento...</p>
-    <b-container class="bv-example-row">
-      <b-row>
-        <b-col>
-          <Timeline :talks="this.firstDayTalks" title="Viernes 03"></Timeline>
-        </b-col>
-        <b-col>
-          <Timeline :talks="this.lastDayTalks" title="Sábado 04"></Timeline>
-        </b-col>
-      </b-row>
-    </b-container>
+    <Timeline :talks="this.firstDayTalks" title="Agenda Viernes 03"></Timeline>
 
+    <Timeline :talks="this.lastDayTalks" title="Agenda Sábado 04"></Timeline>
   </div>
 </template>
 
