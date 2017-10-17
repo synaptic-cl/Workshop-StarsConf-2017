@@ -11,7 +11,9 @@
             <h2>{{eventData.name}}</h2>
             <p v-if="eventData.speaker!=null">Orador: {{eventData.speaker.name}}</p>
             <p>{{ setRoom }}</p>
-            <a href="#0" class="cd-read-more">Más Información</a>
+            <a href="#0" class="cd-read-more" @click="showModal = true">Más Información</a>
+            <modal v-if="showModal" @close="showModal = false" :information="eventData">
+            </modal>
             <span class="cd-date">
                 <strong>Día</strong>: {{eventData.timeSlot.date}}<br>
                 <strong>Inicio</strong>: {{eventData.timeSlot.start}}<br>
@@ -22,9 +24,16 @@
 </template>
 
 <script>
+import Modal from './Utils/Modal.vue';
+
 export default {
     data() {
-        return {}
+        return {
+            showModal: false
+        }
+    },
+    components: {
+        Modal: Modal
     },
     props: ['eventData'],
     computed: {
