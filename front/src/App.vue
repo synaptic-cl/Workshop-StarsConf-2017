@@ -1,10 +1,14 @@
 <template>
   <div id="app">
     <h1>{{ msg }}</h1>
+    <br>
+    <router-link to="/agenda/viernes" active>Programación Viernes</router-link>
+    <router-link to="/agenda/sabado">Programación Sábado</router-link>
+    <router-link to="/nosotros">Acerca de Synaptic</router-link>
+    <br><br>
     <p v-if="loading">Cargando Información del Evento...</p>
-    <Timeline :talks="this.firstDayTalks" title="Agenda Viernes 03"></Timeline>
-
-    <Timeline :talks="this.lastDayTalks" title="Agenda Sábado 04"></Timeline>
+    <br>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -20,65 +24,23 @@ export default {
     return {
       msg: 'Horario StarsConf 2017',
       loading: true,
-      timeSlots: {},
       talks: [],
-      firstDayTalks: [],
-      lastDayTalks: [],
-      days: [],
-      grid: {},
     }
   },
-  components: {
-    Timeline,
-  },
   methods: {
-    // loadSchedule() {
-    //   console.log('Load schedule');
-    //   let days = new Map();
-    //   axios.get(`http://localhost:8000/graphql?query=${ALL_TALKS}`)
-    //     .then((response) => {
-    //       console.log(response);
-    //       response.data.data.allTalks.forEach((talk) => {
-    //         if (talk.speaker) {
-    //           talk.speaker = talk.speaker.name;
-    //         }
-
-    //         let date = talk.timeSlot.date;
-    //         days.set(date, "");
-    //         this.days = Array.from(days.keys());
-    //         this.talks.push(talk);
-    //       });
-
-    //       this.talks.forEach((talk) => {
-    //         this.timeSlots[talk.timeSlot.id] = talk.timeSlot;
-    //         if (!this.grid[talk.timeSlot.id]) {
-    //           this.grid[talk.timeSlot.id] = {};
-    //         }
-
-    //         this.grid[talk.timeSlot.id][talk.room] = talk;
-    //       })
-    //       this.loading = false;
-    //     });
-    // },
-    // timeSlotsOfDay(day) {
-    //   let slots = []
-    //   Object.values(this.timeSlots).forEach(slot => {
-    //     if (slot.date === day) {
-    //       slots.push(slot);
-    //     }
-    //   });
-    //   return slots;
-    // }
     loadSchedule() {
       axios.get(`http://localhost:8000/graphql?query=${ALL_TALKS}`)
         .then((response) => {
           this.talks = response.data.data.allTalks;
-          this.firstDayTalks = this.talks.filter((x) => {
+          this.$store.state.talksViernes = this.talks.filter((x) => {
             return x.timeSlot.date == "2017-11-03";
           });
-          this.lastDayTalks = this.talks.filter((x) => {
+          this.$store.state.talksSabado = this.talks.filter((x) => {
             return x.timeSlot.date == "2017-11-04";
           })
+        })
+        .then(() => {
+          this.loading = false;
         })
     },
     setScrollBehavior() {
@@ -172,5 +134,9 @@ a {
   100% {
     transform: scale(1);
   }
+}
+
+.router-link-active {
+  color: red;
 }
 </style>
