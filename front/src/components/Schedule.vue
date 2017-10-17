@@ -1,6 +1,5 @@
 <template>
   <div class="schedule">
-    <h1>{{ msg }}</h1>
     <br>
     <router-link to="/agenda/viernes" active>Programación Viernes</router-link>
     <router-link to="/agenda/sabado">Programación Sábado</router-link>
@@ -26,6 +25,7 @@ export default {
     return {
       tasks: [],
       addMode: false,
+      loading: true
     }
   },
   apollo: {
@@ -38,6 +38,7 @@ export default {
         this.$store.state.talksSabado = allTalks.filter((x) => {
           return x.timeSlot.date == "2017-11-04";
         })
+        this.loading = false;
         return allTalks
       },
     },
