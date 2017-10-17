@@ -1,5 +1,4 @@
-const ALL_TALKS = `
-{
+query allSpeakersQuery {
   allTalks {
     id
     name
@@ -16,6 +15,4 @@ const ALL_TALKS = `
     category
     isPlaceholder
   }
-}`;
-
-export default ALL_TALKS;
+}

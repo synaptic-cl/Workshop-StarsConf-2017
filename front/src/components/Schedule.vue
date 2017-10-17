@@ -1,83 +1,117 @@
 <template>
   <div class="schedule">
-    <div class="row">
-      <h2>{{title}}</h2>
-      <div class="cell">Hora</div>
-      <div class="cell" v-for="(room, index) in roomIds">
-        {{roomNames[index]}}
-      </div>
-    </div>
-    <div class="row" v-for="slot in orderedTimeSlots()">
-        <div class="cell">{{slot.start.substring(0, 5)}}-{{slot.end.substring(0, 5)}}</div>
-        <div v-show="grid[slot.id]['A_']" class="cell full">
-          <p>{{grid[slot.id]['A_'] && grid[slot.id]['A_'].speaker}}</p>
-          <p class="name">{{grid[slot.id]['A_'] && grid[slot.id]['A_'].name}}</p>
-        </div>
-        <div v-show="!grid[slot.id]['A_']">
-          <div class="cell" v-for="room in roomIds">
-            <p>{{grid[slot.id] && grid[slot.id][room] && grid[slot.id][room].speaker}}</p>
-            <p class="name">{{grid[slot.id] && grid[slot.id][room] && grid[slot.id][room].name}}</p>
-          </div>
-        </div>
-    </div>
+    <br><br>
+    <p v-if="loading">Cargando Información del Evento...</p>
+    <br>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+import TASKS_ALL from '../graphql/AllTalks.gql'
+import TimeLine from './Timeline.vue'
 
 export default {
   name: 'schedule',
-  props: ['title', 'roomNames', 'roomIds', 'timeSlots', 'grid'],
+  components: {
+    TimeLine: TimeLine
+  },
+
   data() {
     return {
+      tasks: [],
+      addMode: false,
+      loading: true
     }
   },
-  methods: {
-    orderedTimeSlots() {
-      var orderedTimeSlots = Object.values(this.timeSlots);
-      //order by time
-      orderedTimeSlots.sort((a,b) => {
-        let nameA = `${a.date} ${a.start} ${a.end}`;
-        let nameB = `${b.date} ${b.start} ${b.end}`;
-        if(nameA < nameB){
-          return -1;
-        }
-        if(nameA > nameB){
-          return 1;
-        }
-        return 0;
-      });
-      return orderedTimeSlots;
-    }
+  apollo: {
+    tasks: {
+      query: TASKS_ALL,
+      update({ allTalks }) {
+        this.$store.state.talksViernes = allTalks.filter((x) => {
+          return x.timeSlot.date == "2017-11-03";
+        });
+        this.$store.state.talksSabado = allTalks.filter((x) => {
+          return x.timeSlot.date == "2017-11-04";
+        })
+        this.loading = false;
+        return allTalks
+      },
+    },
   }
 }
 </script>
 
 
 <style>
-.schedule {
-  clear: both;
+@import url("https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700");
+@import url("../assets/vertical-timeline/css/reset.css");
+@import url("../assets/vertical-timeline/css/style.css");
+
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  /* -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+  text-align: center;
+  color: #2c3e50;
 }
 
-.row .cell {
-  border: 1px solid black;
-  padding: 5px;
-  float: left;
-  box-sizing: border-box;
-  width: 17%;
-  height: 130px;
+h1,
+h2 {
+  font-weight: normal;
 }
 
-.row .cell.full {
-  width: 68%;
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 
-.row {
-  clear: both;
+li {
+  margin: 0 10px;
 }
 
-.cell .name {
- font-weight: bold;
+a {
+  color: #42b983;
 }
 
+#cd-timeline {
+  position: relative;
+  padding: 2em 0;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+#cd-timeline::before {
+  /* this is the vertical line */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 18px;
+  height: 100%;
+  width: 4px;
+  background: #d7e4ed;
+}
+
+.cssanimations .cd-timeline-img.is-hidden {
+  visibility: hidden;
+}
+
+.cssanimations .cd-timeline-img.bounce-in {
+  visibility: visible;
+  animation: cd-bounce-1 0.6s;
+}
+
+@keyframes cd-bounce-1 {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 </style>
