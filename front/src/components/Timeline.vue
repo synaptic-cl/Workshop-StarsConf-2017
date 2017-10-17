@@ -2,6 +2,7 @@
     <div>
         <br>
         <h2>{{this.title}}</h2>
+        <!-- <pre>{{this.talks}}</pre> -->
         <section id="cd-timeline">
             <TimelineBlock :key="item.id" v-for="item in this.talks" :eventData="item"></TimelineBlock>
         </section>
