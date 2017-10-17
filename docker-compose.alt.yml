@@ -1,0 +1,16 @@
+version: '2'
+services:
+    back:
+        image: workshopstarsconf_back
+        volumes:
+            - ./back:/src
+        ports:
+            - 8000:8000
+    front:
+        image: workshopstarsconf_front
+        volumes:
+            - ./front:/src
+            - /src/node_modules
+        ports:
+            - 8080:8080
+
