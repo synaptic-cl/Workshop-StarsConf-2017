@@ -5,7 +5,6 @@
         <section id="cd-timeline">
             <TimelineBlock :key="item.id" v-for="item in this.talks" :eventData="item"></TimelineBlock>
         </section>
-        <pre>{{this.talks}}</pre>
     </div>
 </template>
 

@@ -10,16 +10,10 @@
         <div class="cd-timeline-content card">
             <h2>{{eventData.name}}</h2>
             <p v-if="eventData.speaker!=null">Orador: {{eventData.speaker.name}}</p>
-
-            <p v-if="eventData.room!=''">
-                <strong>Lugar</strong>:
-                <span v-if="eventData.room='DOS'">Sala 2</span>
-                <span v-else-if="eventData.room='PRINCIPAL'">Sala Principal</span>
-                <span v-else-if="eventData.room='CHICA'">Sala Chica</span>
-                <span v-else-if="eventData.room='TALLERES'">Sala Talleres</span>
-            </p>
-            <a href="#0" class="btn btn-dark">
-                <i class="fa fa-plus" aria-hidden="true" /> Más</a>
+            <p>{{ setRoom }}</p>
+            <a href="#0" class="cd-read-more" @click="showModal = true">Más Información</a>
+            <modal v-if="showModal" @close="showModal = false" :information="eventData">
+            </modal>
             <span class="cd-date">
                 <strong>Día</strong>: {{eventData.timeSlot.date}}<br>
                 <strong>Inicio</strong>: {{eventData.timeSlot.start}}<br>
@@ -30,9 +24,16 @@
 </template>
 
 <script>
+import Modal from './Utils/Modal.vue';
+
 export default {
     data() {
-        return {}
+        return {
+            showModal: false
+        }
+    },
+    components: {
+        Modal: Modal
     },
     props: ['eventData'],
     computed: {
