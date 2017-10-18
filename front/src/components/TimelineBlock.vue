@@ -47,24 +47,8 @@ export default {
         isActive(timenow) {
             const timeStart = this.eventData.timeSlot.start.slice(0, 5)
             const timeEnd = this.eventData.timeSlot.end.slice(0, 5)
-            if (
-                Date.parse("01/01/2011 " + timenow + ":00") >=
-                Date.parse('01/01/2011 ' + timeStart + ':00') &&
-                Date.parse("01/01/2011 " + timenow + ":00") <=
-                Date.parse('01/01/2011 ' + timeEnd + ':00')
-            ) {
-                this.title = 'Charla en Curso'
-                this.badgeStyle = 'badge-success'
-            }
-            else if (
-                Date.parse("01/01/2011 " + timenow + ":00") <
-                Date.parse('01/01/2011 ' + timeEnd + ':00')) {
-                this.title = 'Proxima Charla'
-                this.badgeStyle = 'badge-warning'
-            } else {
-                this.title = 'Charlas Finalizadas'
-                this.badgeStyle = 'badge-danger'
-            }
+            this.title = 'Charlas Finalizadas'
+            this.badgeStyle = 'badge-danger'
         }
     },
     computed: {
@@ -105,7 +89,7 @@ export default {
                 case 'Taller':
                     baseImage = "http://smsvaranasi.com/wp-content/uploads/2016/01/Workshop-icon.png"
                 default:
-                    baseImage = "https://openclipart.org/image/2400px/svg_to_png/22305/pitr-Coffee-cup-icon.png"
+                    baseImage = ""
                     break;
             }
             return baseImage
