@@ -40,7 +40,11 @@ module.exports = {
       }
     ]
   },
+  resolveLoader: {
+    modules: [path.join('/data/', 'node_modules')],
+  },
   resolve: {
+    modules: [path.join('/data/', 'node_modules')],
     alias: {
       vue$: 'vue/dist/vue.esm.js'
     }
