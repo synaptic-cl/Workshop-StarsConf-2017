@@ -1,8 +1,6 @@
 <template>
-  <div class="schedule">
-    <br><br>
+  <div class="schedule" id="container-base">
     <p v-if="loading">Cargando Información del Evento...</p>
-    <br>
     <router-view></router-view>
   </div>
 </template>
@@ -10,6 +8,7 @@
 <script>
 import TASKS_ALL from '../graphql/AllTalks.gql'
 import TimeLine from './Timeline.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'schedule',
@@ -19,10 +18,15 @@ export default {
 
   data() {
     return {
-      tasks: [],
-      addMode: false,
       loading: true
     }
+  },
+  /*
+    This use apollo to query the graphql's API and
+    set the filtered data to the state.
+  */
+  created() {
+    this.$store.dispatch('setTime')
   },
   apollo: {
     tasks: {
@@ -34,9 +38,15 @@ export default {
         this.$store.state.talksSabado = allTalks.filter((x) => {
           return x.timeSlot.date == "2017-11-04";
         })
-        this.loading = false;
-        return allTalks
       },
+      result({ data, loader, networkStatus }) {
+        this.loading = false;
+        return data
+      },
+      error(error) {
+        this.loading = false;
+        console.error('We\'ve got an error!', error)
+      }
     },
   }
 }
@@ -44,6 +54,8 @@ export default {
 
 
 <style>
+/* Import styles from "Vertical-timeline"  */
+
 @import url("https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700");
 @import url("../assets/vertical-timeline/css/reset.css");
 @import url("../assets/vertical-timeline/css/style.css");
@@ -90,6 +102,10 @@ a {
   height: 100%;
   width: 4px;
   background: #d7e4ed;
+}
+
+#container-base {
+  margin-top: 50px;
 }
 
 .cssanimations .cd-timeline-img.is-hidden {
