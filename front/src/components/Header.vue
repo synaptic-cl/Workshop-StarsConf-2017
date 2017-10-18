@@ -5,18 +5,18 @@
         <i class="fa fa-calendar" aria-hidden="true"></i>
       </h1>
     </header>
-    <clock></clock>
-    <ul class="nav nav-tabs nav-fill justify-content-center">
+    <ul class="nav nav-tabs justify-content-center" id="navigation-ul">
       <li class="nav-item">
-        <router-link to="/agenda/viernes" active-class="nav-link active">Programación Viernes</router-link>
+        <router-link to="/agenda/viernes" class="nav-link" active>Programación Viernes</router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/agenda/sabado" active-class="nav-link active">Programación Sábado</router-link>
+        <router-link to="/agenda/sabado" class="nav-link">Programación Sábado</router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/nosotros" active-class="nav-link active">Acerca de Synaptic</router-link>
+        <router-link to="/nosotros" class="nav-link">Acerca de Synaptic</router-link>
       </li>
     </ul>
+    <clock></clock>
   </div>
 </template>
 
@@ -33,8 +33,8 @@ export default {
 
 <style scope>
 header {
-  height: 260px;
-  line-height: 260px;
+  height: 300px!important;
+  line-height: 300px!important;
   text-align: center;
   background: #303e49;
 }
@@ -47,12 +47,30 @@ header h1 {
 
 @media only screen and (min-width: 1170px) {
   header {
-    height: 260px;
-    line-height: 260px;
+    height: 300px!important;
+    line-height: 300px!important;
   }
   header h1 {
     font-size: 24px;
     font-size: 2rem;
   }
+}
+
+#navigation-ul {
+  background: #303e49;
+}
+
+#navigation-ul li a {
+  color: #ffffff;
+}
+
+.router-link-active {
+  background: #e9f0f5;
+  color: #303e49!important;
+}
+
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+  border-color: #e9f0f5 #e9f0f5 #e9f0f5;
 }
 </style>

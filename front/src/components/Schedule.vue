@@ -1,12 +1,6 @@
 <template>
-  <div class="schedule">
-    <br>
-    <router-link to="/agenda/viernes" active exact>Programación Viernes</router-link>
-    <router-link to="/agenda/sabado">Programación Sábado</router-link>
-    <router-link to="/nosotros">Acerca de Synaptic</router-link>
-    <br><br>
+  <div class="schedule" id="container-base">
     <p v-if="loading">Cargando Información del Evento...</p>
-    <br>
     <router-view></router-view>
   </div>
 </template>
@@ -38,12 +32,13 @@ export default {
         this.$store.state.talksSabado = allTalks.filter((x) => {
           return x.timeSlot.date == "2017-11-04";
         })
-        this.loading = false;
       },
       result({ data, loader, networkStatus }) {
+        this.loading = false;
         return data
       },
       error(error) {
+        this.loading = false;
         console.error('We\'ve got an error!', error)
       }
     },
@@ -99,6 +94,10 @@ a {
   height: 100%;
   width: 4px;
   background: #d7e4ed;
+}
+
+#container-base {
+  margin-top: 50px;
 }
 
 .cssanimations .cd-timeline-img.is-hidden {
