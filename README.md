@@ -8,11 +8,11 @@ Requisitos: Windows 7 o superior de 64bits
 
 Descargar docker Installer: https://store.docker.com/editions/community/docker-ce-desktop-windows 
 
-Doble click an instalador y seguir los pasos de instalación. Terminada la instalación, aceptar habilitar Hyper-V en caso de no estar habilitado.
+Doble click al instalador y seguir los pasos de instalación. Terminada la instalación, aceptar habilitar Hyper-V en caso de no estar habilitado.
 
 Reiniciar el equipo, al iniciar, el icono de la ballenita aparecerá en la barra de notificaciones indicando que Docker está en funcionamiento.
 
-Abrir Powershell y ejecutar el siguiente comando:
+Abrir Powershell e ir a la raiz del proyecto y ejecutar el siguiente comando:
 
 ```bash
 docker-compose up -d
