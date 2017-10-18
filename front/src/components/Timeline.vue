@@ -28,7 +28,6 @@
 */
 
 import TimelineBlock from './TimelineBlock.vue';
-import { mapGetters } from 'vuex';
 
 export default {
     /*
