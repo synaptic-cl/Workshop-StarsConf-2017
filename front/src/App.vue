@@ -10,7 +10,6 @@
 import Header from './components/Header.vue'
 import Schedule from './components/Schedule.vue'
 import Footer from './components/Footer.vue'
-import TASKS_ALL from './graphql/AllTalks.gql'
 
 export default {
   name: 'app',
