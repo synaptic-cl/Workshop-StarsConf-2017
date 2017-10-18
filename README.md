@@ -34,12 +34,17 @@ docker-compose up -d
 docker-compose up -d
 ```
 
-
 ## Entrar al contenedor
 
 ```bash
 docker-compose exec back sh
 docker-compose exec front sh
+```
+
+## Si no tienes acceso a internet pero tienes las imágenes de Docker en tu máquina:
+
+```bash
+docker-compose -f docker-compose.alt.yml up -d
 ```
 
 Visitar http://localhost:8080 para la aplicación principal.  
