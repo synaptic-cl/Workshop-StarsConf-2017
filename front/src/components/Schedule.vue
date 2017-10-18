@@ -8,6 +8,7 @@
 <script>
 import TASKS_ALL from '../graphql/AllTalks.gql'
 import TimeLine from './Timeline.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'schedule',
@@ -17,10 +18,11 @@ export default {
 
   data() {
     return {
-      tasks: [],
-      addMode: false,
       loading: true
     }
+  },
+  created() {
+    this.$store.dispatch('setTime')
   },
   apollo: {
     tasks: {

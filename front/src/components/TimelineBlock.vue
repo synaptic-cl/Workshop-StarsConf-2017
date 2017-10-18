@@ -1,14 +1,14 @@
 <template>
     <div class="cd-timeline-block">
         <div class="cd-timeline-img">
-            <img v-if="eventData.category==='Web & Mobile'" src="http://www.75squared.co.uk/wp-content/uploads/2015/08/mobile-icon.png">
-            <img v-else-if="eventData.category==='Mix'" src="http://icons.iconarchive.com/icons/iconsmind/outline/512/Arrow-Mix-icon.png">
-            <img v-else-if="eventData.category==='Developer Tools'" src="https://access.redhat.com/webassets/avalon/g/dev-tools-200.png">
-            <img v-else-if="eventData.category==='Taller'" src="http://smsvaranasi.com/wp-content/uploads/2016/01/Workshop-icon.png">
-            <img v-else src="https://openclipart.org/image/2400px/svg_to_png/22305/pitr-Coffee-cup-icon.png">
+            <img :src="setBaseImage" />
         </div>
         <div class="cd-timeline-content card">
+            <div id="info-state">
+                <span class="float-right badge" :class="[badgeStyle]">{{title}}</span>
+            </div>
             <h2>{{eventData.name}}</h2>
+            {{getTimeStore}}
             <p v-if="eventData.speaker!=null">Orador: {{eventData.speaker.name}}</p>
             <p>{{ setRoom }}</p>
             <a href="#0" class="cd-read-more" @click="showModal = true">Más Información</a>
@@ -28,14 +28,43 @@ import Modal from './Utils/Modal.vue';
 export default {
     data() {
         return {
-            showModal: false
+            showModal: false,
+            title: '',
+            badgeStyle: 'badge-danger'
         }
     },
     components: {
         Modal: Modal
     },
     props: ['eventData'],
+    methods: {
+        isActive(timenow) {
+            const timeStart = this.eventData.timeSlot.start.slice(0, 5)
+            const timeEnd = this.eventData.timeSlot.end.slice(0, 5)
+            if (
+                Date.parse("01/01/2011 " + timenow + ":00") >=
+                Date.parse('01/01/2011 ' + timeStart + ':00') &&
+                Date.parse("01/01/2011 " + timenow + ":00") <=
+                Date.parse('01/01/2011 ' + timeEnd + ':00')
+            ) {
+                this.title = 'Charla en Curso'
+                this.badgeStyle = 'badge-success'
+            }
+            else if (
+                Date.parse("01/01/2011 " + timenow + ":00") <
+                Date.parse('01/01/2011 ' + timeEnd + ':00')) {
+                this.title = 'Proxima Charla'
+                this.badgeStyle = 'badge-warning'
+            } else {
+                this.title = 'Charlas Finalizadas'
+                this.badgeStyle = 'badge-danger'
+            }
+        }
+    },
     computed: {
+        getTimeStore: function() {
+            return this.isActive(this.$store.getters.getTimeNow)
+        },
         setRoom: function() {
             let room = ''
             switch (this.eventData.room) {
@@ -55,10 +84,36 @@ export default {
             }
             return room
         }
+        , setBaseImage: function() {
+            let baseImage = ''
+            switch (this.eventData.category) {
+                case 'Web & Mobile':
+                    baseImage = "http://smsvaranasi.com/wp-content/uploads/2016/01/Workshop-icon.png"
+                    break;
+                case 'Mix':
+                    baseImage = "http://icons.iconarchive.com/icons/iconsmind/outline/512/Arrow-Mix-icon.png"
+                    break
+                case 'Developer Tools':
+                    baseImage = "http://smsvaranasi.com/wp-content/uploads/2016/01/Workshop-icon.png"
+                case 'Taller':
+                    baseImage = "http://smsvaranasi.com/wp-content/uploads/2016/01/Workshop-icon.png"
+                default:
+                    baseImage = "https://openclipart.org/image/2400px/svg_to_png/22305/pitr-Coffee-cup-icon.png"
+                    break;
+            }
+            return baseImage
+        }
     }
 }
 </script>
 
-<style>
+<style scoped>
+#info-state {
+    padding: 0 0 1em 0;
+}
 
+.badge-warning {
+    color: #ffffff;
+    background-color: #ffc107;
+}
 </style>

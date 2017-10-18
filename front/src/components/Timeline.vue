@@ -18,7 +18,9 @@ export default {
         return {
             talks: [],
             title: "",
-            dia: ""
+            minutes: '',
+            seconds: '',
+            hourtime: ''
         }
     },
     components: {
