@@ -12,7 +12,7 @@
             <p v-if="eventData.speaker!=null">Orador: {{eventData.speaker.name}}</p>
             <p>{{ setRoom }}</p>
             <a href="#0" class="cd-read-more" @click="showModal = true">Más Información</a>
-            <modal v-if="showModal" @close="showModal = false" :information="eventData">
+            <modal v-if="showModal" @close="showModal = false" :information="emptyList">
             </modal>
             <span class="cd-date">
                 <strong>Hora de Inicio</strong>: {{eventData.timeSlot.start.slice(0, 5)}}<br>
@@ -33,7 +33,10 @@ export default {
         return {
             showModal: false,
             title: '',
-            badgeStyle: 'badge-danger'
+            badgeStyle: 'badge-danger',
+            /* P03 Pass data to the modal
+            Recomended: Look Orador's information */
+            emptyList: []
         }
     },
     components: {

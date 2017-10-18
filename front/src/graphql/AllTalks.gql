@@ -12,7 +12,6 @@ query allSpeakersQuery {
       end
     }
     room
-    category
     isPlaceholder
   }
 }

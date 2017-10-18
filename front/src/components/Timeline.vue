@@ -83,7 +83,10 @@ export default {
             /*
                 Modify this line if you want to add a filter
             */
-            /* P07 */
+            /* 
+                P07
+                Recommended: Only use Javascript.
+            */
             return charlas.filter((x) => {
                 return true
             });
