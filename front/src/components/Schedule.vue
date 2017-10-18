@@ -1,10 +1,6 @@
 <template>
   <div class="schedule">
     <br>
-    <router-link to="/agenda/viernes" active exact>Programación Viernes</router-link>
-    <router-link to="/agenda/sabado">Programación Sábado</router-link>
-    <router-link to="/nosotros">Acerca de Synaptic</router-link>
-    <br><br>
     <p v-if="loading">Cargando Información del Evento...</p>
     <br>
     <router-view></router-view>
