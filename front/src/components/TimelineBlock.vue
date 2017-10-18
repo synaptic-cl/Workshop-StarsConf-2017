@@ -1,13 +1,14 @@
 <template>
     <div class="cd-timeline-block">
         <div class="cd-timeline-img">
+            <!-- TO DO: Move these statics to project's folder -->
             <img v-if="eventData.category==='Web & Mobile'" src="http://www.75squared.co.uk/wp-content/uploads/2015/08/mobile-icon.png">
             <img v-else-if="eventData.category==='Mix'" src="http://icons.iconarchive.com/icons/iconsmind/outline/512/Arrow-Mix-icon.png">
             <img v-else-if="eventData.category==='Developer Tools'" src="https://access.redhat.com/webassets/avalon/g/dev-tools-200.png">
             <img v-else-if="eventData.category==='Taller'" src="http://smsvaranasi.com/wp-content/uploads/2016/01/Workshop-icon.png">
             <img v-else src="https://openclipart.org/image/2400px/svg_to_png/22305/pitr-Coffee-cup-icon.png">
         </div>
-        <div class="cd-timeline-content card">
+        <div class="cd-timeline-content ">
             <h2>{{eventData.name}}</h2>
             <p v-if="eventData.speaker!=null">Orador: {{eventData.speaker.name}}</p>
             <p>{{ setRoom }}</p>
@@ -24,7 +25,10 @@
 
 <script>
 import Modal from './Utils/Modal.vue';
-
+/*
+    This component is the card itself, it relies on Sebastiano Guerriero's 
+    Vertical-timeline (https://codyhouse.co/gem/vertical-timeline/)
+*/
 export default {
     data() {
         return {
@@ -37,6 +41,7 @@ export default {
     props: ['eventData'],
     computed: {
         setRoom: function() {
+            /* This computed sets the 'pretty' room's name in the card */
             let room = ''
             switch (this.eventData.room) {
                 case 'DOS':

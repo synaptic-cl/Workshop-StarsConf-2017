@@ -24,6 +24,10 @@ export default {
       loading: true
     }
   },
+  /*
+    This use apollo to query the graphql's API and
+    set the filtered data to the state.
+  */
   apollo: {
     tasks: {
       query: TASKS_ALL,
@@ -49,6 +53,8 @@ export default {
 
 
 <style>
+/* Import styles from "Vertical-timeline"  */
+
 @import url("https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700");
 @import url("../assets/vertical-timeline/css/reset.css");
 @import url("../assets/vertical-timeline/css/style.css");
