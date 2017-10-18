@@ -42,6 +42,9 @@ export default {
         return {
             talks: [],
             title: "",
+            /*
+                This field's data is binded to the form.
+            */
             busqueda: ""
         }
     },
@@ -82,12 +85,7 @@ export default {
             */
             /* P07 */
             return charlas.filter((x) => {
-                let current_busqueda = this.busqueda.toLowerCase()
-                let search_speaker = x.speaker != null ? x.speaker.name.toLowerCase().includes(this.busqueda) : false;
-                let search_title = x.name.toLowerCase().includes(current_busqueda);
-                let search_room = x.room.toLowerCase().includes(this.busqueda);
-                let search_category = x.category.toLowerCase().includes(this.busqueda);
-                return search_speaker || search_category || search_title || search_room;
+                return true
             });
         }
     }
