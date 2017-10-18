@@ -10,7 +10,6 @@ services:
         image: workshopstarsconf_front
         volumes:
             - ./front:/src
-            - /src/node_modules
         ports:
             - 8080:8080
 
