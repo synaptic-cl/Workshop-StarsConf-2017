@@ -47,6 +47,9 @@ export default {
         isActive(timenow) {
             const timeStart = this.eventData.timeSlot.start.slice(0, 5)
             const timeEnd = this.eventData.timeSlot.end.slice(0, 5)
+            /*
+            P04 crearlogica que devuela los tag de charla actual, proxima y finalizada
+            */
             this.title = 'Charlas Finalizadas'
             this.badgeStyle = 'badge-danger'
         }

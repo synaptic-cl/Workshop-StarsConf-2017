@@ -1,3 +1,4 @@
+# P05 Consulta a graphql, revisar localhost:8000/graphql
 query allSpeakersQuery {
   allTalks {
     id
