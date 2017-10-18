@@ -3,6 +3,10 @@
     <div>
         <br>
         <h2>{{this.title}}</h2>
+        <div class="from-group pull-right" style="margin-right: 10px">
+            <label for="filterInput">Buscar</label>
+            <input v-model="busqueda" class="form-control" id="filterInput" placeholder="Términos de Búsqueda">
+        </div>
         <section id="cd-timeline" class="cd-container">
             <TimelineBlock :key="item.id" v-for="item in this.fetchData" :eventData="item"></TimelineBlock>
         </section>
@@ -38,7 +42,8 @@ export default {
         return {
             talks: [],
             title: "",
-            dia: ""
+            dia: "",
+            busqueda: ""
         }
     },
     /*
@@ -76,7 +81,15 @@ export default {
             /*
                 Modify this line if you want to add a filter
             */
-            return charlas.filter((x) => { return true });
+            /* P07 */
+            return charlas.filter((x) => {
+                let current_busqueda = this.busqueda.toLowerCase()
+                let search_speaker = x.speaker != null ? x.speaker.name.toLowerCase().includes(this.busqueda) : false;
+                let search_title = x.name.toLowerCase().includes(current_busqueda);
+                let search_room = x.room.toLowerCase().includes(this.busqueda);
+                let search_category = x.category.toLowerCase().includes(this.busqueda);
+                return search_speaker || search_category || search_title || search_room;
+            });
         }
     }
 }
