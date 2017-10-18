@@ -1,16 +1,16 @@
 
 <template>
     <div>
-        <br>
         <h2>{{this.title}}</h2>
-        <div class="from-group pull-right" style="margin-right: 10px">
-            <label for="filterInput">Buscar</label>
-            <input v-model="busqueda" class="form-control" id="filterInput" placeholder="Términos de Búsqueda">
+        <div class="pull-right">
+            <div class="from-group" style="margin-right: 15px;">
+                <label for="filterInput">Buscar</label>
+                <input v-model="busqueda" class="form-control" id="filterInput" placeholder="Términos de Búsqueda">
+            </div>
         </div>
         <section id="cd-timeline" class="cd-container">
             <TimelineBlock :key="item.id" v-for="item in this.fetchData" :eventData="item"></TimelineBlock>
         </section>
-        {{$data}}
     </div>
 </template>
 
@@ -42,7 +42,6 @@ export default {
         return {
             talks: [],
             title: "",
-            dia: "",
             busqueda: ""
         }
     },

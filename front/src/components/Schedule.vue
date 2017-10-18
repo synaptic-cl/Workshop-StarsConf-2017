@@ -8,6 +8,7 @@
 <script>
 import TASKS_ALL from '../graphql/AllTalks.gql'
 import TimeLine from './Timeline.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'schedule',
@@ -17,8 +18,6 @@ export default {
 
   data() {
     return {
-      tasks: [],
-      addMode: false,
       loading: true
     }
   },
@@ -26,6 +25,9 @@ export default {
     This use apollo to query the graphql's API and
     set the filtered data to the state.
   */
+  created() {
+    this.$store.dispatch('setTime')
+  },
   apollo: {
     tasks: {
       query: TASKS_ALL,
