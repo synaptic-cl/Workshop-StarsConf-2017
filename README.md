@@ -6,6 +6,12 @@
 docker-compose up -d
 ```
 
+Si no tienes acceso a internet pero tienes las imágenes de Docker en tu computador:
+
+```bash
+docker-compose -f docker-compose.alt.yml up -d
+```
+
 ## Entrar al contenedor
 
 ```bash
