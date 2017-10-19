@@ -1,7 +1,8 @@
 <template>
-    <div class="cd-timeline-block">
+    <div class="cd-timeline-block" :id="id">
         <div class="cd-timeline-img">
-            <img :src="setBaseImage" />
+            <img v-if="timeNowImage" :src="timeNowImage" />
+            <img v-else :src="setBaseImage" />
         </div>
         <div class="cd-timeline-content card">
             <div :key="item.id" v-for="item in eventData">
@@ -35,7 +36,11 @@ export default {
     return {
       showModal: false,
       title: "",
-      badgeStyle: "badge-danger"
+      badgeStyle: "badge-danger",
+      baseImage: "",
+      timeNowImage: null,
+      id: this.eventData[0].id,
+      scroll: true
     };
   },
   components: {
@@ -54,12 +59,27 @@ export default {
       ) {
         this.title = "Charla en Curso";
         this.badgeStyle = "badge-success";
+        this.timeNowImage =
+          "http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Actions-rating-icon.png";
       } else if (
         Date.parse("01/01/2011 " + timenow + ":00") <
         Date.parse("01/01/2011 " + timeEnd + ":00")
       ) {
         this.title = "Proxima Charla";
         this.badgeStyle = "badge-warning";
+        var nav = $("#" + this.id);
+        if (nav.length && this.scroll) {
+          $("html,body").animate(
+            {
+              scrollTop: nav.offset().top
+            },
+            2000,
+            () => {
+              this.scroll = false;
+              $("html,body").stop(true, true);
+            }
+          );
+        }
       } else {
         this.title = "Charlas Finalizadas";
         this.badgeStyle = "badge-danger";
