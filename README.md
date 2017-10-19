@@ -15,7 +15,7 @@ Reiniciar el equipo, al iniciar, el icono de la ballenita aparecerá en la barra
 Abrir Powershell e ir a la raiz del proyecto y ejecutar el siguiente comando:
 
 ```bash
-docker-compose up -d
+docker-compose up
 ```
 
 Al finalizar la instalación, docker solicitará permisos para compartir la unidad C.
@@ -25,13 +25,13 @@ Listo.
 ### Linux
 
 ```bash
-docker-compose up -d
+docker-compose up
 ```
 
 ### OSX
 
 ```bash
-docker-compose up -d
+docker-compose up
 ```
 
 ## Entrar al contenedor
@@ -44,7 +44,7 @@ docker-compose exec front sh
 ## Si no tienes acceso a internet pero tienes las imágenes de Docker en tu máquina:
 
 ```bash
-docker-compose -f docker-compose.alt.yml up -d
+docker-compose -f docker-compose.alt.yml up
 ```
 
 Visitar http://localhost:8080 para la aplicación principal.  
