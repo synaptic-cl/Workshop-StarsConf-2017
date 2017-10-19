@@ -1,4 +1,4 @@
-FROM python:3-alpine
+FROM python:3.5.4-alpine
 
 WORKDIR /src
 ADD requirements.txt requirements.txt
