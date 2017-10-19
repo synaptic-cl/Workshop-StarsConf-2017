@@ -69,17 +69,22 @@ export default {
         this.badgeStyle = "badge-warning";
         var nav = $("#" + this.id);
         if (nav.length && this.scroll) {
+          this.scroll = false;
           $("html,body").animate(
             {
               scrollTop: nav.offset().top
             },
-            2000,
             () => {
-              this.scroll = false;
               $("html,body").stop(true, true);
             }
           );
         }
+      } else if (
+        Date.parse("01/01/2011 " + timenow + ":00") <
+        Date.parse("01/01/2011 " + timeEnd + ":00")
+      ) {
+        this.title = "Proxima Charla";
+        this.badgeStyle = "badge-warning";
       } else {
         this.title = "Charlas Finalizadas";
         this.badgeStyle = "badge-danger";
