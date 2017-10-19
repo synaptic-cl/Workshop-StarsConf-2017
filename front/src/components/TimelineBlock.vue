@@ -60,12 +60,11 @@ export default {
                 this.badgeStyle = 'badge-success'
 
                 var nav = $('#' + this.id);
-
                 if (nav.length && this.scroll) {
+                    this.scroll = false
                     $('html,body').animate({
                         scrollTop: nav.offset().top
-                    }, 2000, () => {
-                        this.scroll = false
+                    }, () => {
                         $('html,body').stop(true, true);
                     });
                 }
