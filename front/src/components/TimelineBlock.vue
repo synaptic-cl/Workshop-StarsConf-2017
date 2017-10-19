@@ -13,9 +13,9 @@
               {{getTimeStore}}
               <p v-if="item.speaker!=null">Orador: {{item.speaker.name}}</p>
               <p>{{ setRoom(item) }}</p>
-              <a href="#0" class="cd-read-more" @click="showModal = true">Más Información</a>
-              <modal v-if="showModal" @close="showModal = false" :information="item"></modal>
-            </div>  
+            </div>
+            <a href="#0" class="cd-read-more" @click="showModal = true">Más Información</a>
+              <modal v-if="showModal" @close="showModal = false" :information="eventData"></modal>
             <span class="cd-date">
                 <strong>Hora de Inicio</strong>: {{eventData[0].timeSlot.start.slice(0, 5)}}<br>
                 <strong>Hora de Término</strong>: {{eventData[0].timeSlot.end.slice(0, 5)}}
