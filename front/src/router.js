@@ -1,7 +1,7 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Timeline from "./components/Timeline.vue";
-import Nosotros from "./components/Nosotros.vue";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Timeline from './components/Timeline.vue';
+import Nosotros from './components/Nosotros.vue';
 Vue.use(VueRouter);
 
 /*
@@ -12,11 +12,21 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/agenda/:dia",
-    component: Timeline
+    path: '/',
+    redirect: {
+      name: 'agenda',
+      params: {
+        dia: 'viernes'
+      }
+    }
   },
   {
-    path: "/nosotros",
+    path: '/agenda/:dia',
+    component: Timeline,
+    name: 'agenda'
+  },
+  {
+    path: '/nosotros',
     component: Nosotros
   }
 ];

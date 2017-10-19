@@ -2,10 +2,12 @@
 <template>
     <div>
         <h2>{{this.title}}</h2>
-        <div class="pull-right">
-            <div class="from-group" style="margin-right: 15px;">
-                <label for="filterInput">Buscar</label>
-                <input v-model="busqueda" class="form-control" id="filterInput" placeholder="Términos de Búsqueda">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="from-group col-sm-4 float-right" style="margin-right: 15px;">
+                    <label for="filterInput">Buscar</label>
+                    <input v-model="busqueda" class="form-control" id="filterInput" placeholder="Términos de Búsqueda">
+                </div>
             </div>
         </div>
         <section id="cd-timeline" class="cd-container">

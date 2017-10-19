@@ -1,7 +1,8 @@
 <template>
-    <div class="cd-timeline-block">
+    <div class="cd-timeline-block" :id="id">
         <div class="cd-timeline-img">
-            <img :src="setBaseImage" />
+            <img v-if="timeNowImage" :src="timeNowImage" />
+            <img v-else :src="setBaseImage" />
         </div>
         <div class="cd-timeline-content card">
             <div id="info-state">
@@ -33,7 +34,11 @@ export default {
         return {
             showModal: false,
             title: '',
-            badgeStyle: 'badge-danger'
+            baseImage: '',
+            badgeStyle: 'badge-danger',
+            timeNowImage: null,
+            id: this.eventData.id,
+            scroll: true
         }
     },
     components: {
@@ -51,7 +56,20 @@ export default {
                 Date.parse('01/01/2011 ' + timeEnd + ':00')
             ) {
                 this.title = 'Charla en Curso'
+                this.timeNowImage = 'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Actions-rating-icon.png'
                 this.badgeStyle = 'badge-success'
+
+                var nav = $('#' + this.id);
+
+                if (nav.length && this.scroll) {
+                    $('html,body').animate({
+                        scrollTop: nav.offset().top
+                    }, 2000, () => {
+                        this.scroll = false
+                        $('html,body').stop(true, true);
+                    });
+                }
+
             }
             else if (
                 Date.parse("01/01/2011 " + timenow + ":00") <

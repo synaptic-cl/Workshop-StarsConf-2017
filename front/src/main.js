@@ -1,8 +1,11 @@
-import Vue from "vue";
-import App from "./App.vue";
-import apolloProvider from "./apollo.js";
-import { router } from "./router.js";
-import { store } from "./store.js";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.css';
+
+import Vue from 'vue';
+import App from './App.vue';
+import apolloProvider from './apollo.js';
+import { router } from './router.js';
+import { store } from './store.js';
 
 /*
   The Vue App is defined here. Store, Router and Apollo are given 
@@ -10,7 +13,7 @@ import { store } from "./store.js";
 */
 
 new Vue({
-  el: "#app",
+  el: '#app',
   store,
   router,
   apolloProvider,
