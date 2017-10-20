@@ -28,7 +28,8 @@ const routes = [
   {
     path: '/nosotros',
     component: Nosotros
-  }
+  },
+  { path: '*', redirect: '/' }
 ];
 
 export const router = new VueRouter({ routes });
