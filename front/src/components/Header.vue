@@ -21,20 +21,20 @@
 </template>
 
 <script>
-import Clock from './Clock/Clock.vue'
+import Clock from './Utils/Clock.vue';
 
 export default {
   name: 'appheader',
   components: {
     clock: Clock
   }
-}
+};
 </script>
 
 <style scope>
 header {
-  height: 300px!important;
-  line-height: 300px!important;
+  height: 300px !important;
+  line-height: 300px !important;
   text-align: center;
   background: #303e49;
 }
@@ -47,8 +47,8 @@ header h1 {
 
 @media only screen and (min-width: 1170px) {
   header {
-    height: 300px!important;
-    line-height: 300px!important;
+    height: 300px !important;
+    line-height: 300px !important;
   }
   header h1 {
     font-size: 24px;
@@ -66,7 +66,7 @@ header h1 {
 
 .router-link-active {
   background: #e9f0f5;
-  color: #303e49!important;
+  color: #303e49 !important;
 }
 
 .nav-tabs .nav-link:focus,
