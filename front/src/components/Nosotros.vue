@@ -4,11 +4,14 @@
 </template>
 
 <script>
+/**
+ * Sobre Synaptic =)
+ */
 export default {
-    route: {
-        canReuse: false
-    }
-}
+  route: {
+    canReuse: false
+  }
+};
 </script>
 
 <style>

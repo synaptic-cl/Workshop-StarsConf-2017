@@ -21,6 +21,10 @@
 </template>
 
 <script>
+/**
+ * Componente Header, el cual se encarga de manejar las rutas de navegación
+ */
+
 import Clock from './Utils/Clock.vue';
 
 export default {

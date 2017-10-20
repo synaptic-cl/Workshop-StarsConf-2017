@@ -19,94 +19,78 @@
 
 <script>
 /*
-    A single page component in vue is scaffolded as follows:
-    A template (above this), where the html code is written.
+  Un componente de una sola página en vue está estructurado de la siguiente manera:
+  Un Template (arriba), donde se escribe el código html con propiedades de Vue.
 
-    A Script code (this one), is were we write our JS code and vue
-    elements (data, methods, computed, etc)
+  Un código de Script (este), es donde escribimos nuestro código JS y vue
+  elementos (datos, métodos, calculados, etc.)
 
-    A Style tage where css is written. 
-    The scope of this css is also defined there
+  Un estilo donde se escribe css.
+  El alcance de este CSS también se define allí
 */
 
 /*
-    This component renders several "TimelineBlocks" based on the "eventData"
-    In the page, this component is the Line in the middle
+    Este componente representa varios "TimelineBlocks" basados ​​en el "eventData"
+    En la página, este componente es la Línea en el medio
 */
 
-import TimelineBlock from "./TimelineBlock.vue";
+import TimelineBlock from './TimelineBlock.vue';
 
 export default {
   /*
-        As a single file component, data should be a function.
-        Component's attributes are declared here.
+    Como componente de un solo archivo, los datos deben ser una función.
+    Los atributos del componente se declaran aquí.
     */
   data() {
     return {
       talks: [],
-      title: "",
-      busqueda: ""
+      title: '',
+      busqueda: ''
     };
   },
-  /*
-        Register Component "TimelineBlock"
-    */
   components: {
     TimelineBlock
   },
   /*
-        Computed property are methods that will run once and it will
-        not be called again until a variable, involved in the 
-        process, change. For instance, if "this.$store.getters.talksViernes" changes
-        fetchData will be triggered.
+    Las propiedades computadas (computed) son métodos que se ejecutarán una vez y no
+    seran llamadas nuevamente hasta que una variable involucrada en el
+    proceso, cambie. Por ejemplo, si "this.$store.getters.talksViernes" cambia
+    fetchData se activará.
     */
   computed: {
     fetchData() {
-      /*
-                Fetch data will watch changes in the Store, so 
-                the data rendered will be up to date.  
-            */
       let charlas = [];
       switch (this.$route.params.dia) {
-        case "viernes":
-          this.title = "Programación Día Viernes 03 de Noviembre";
+        case 'viernes':
+          this.title = 'Programación Día Viernes 03 de Noviembre';
           charlas = this.$store.getters.talksViernes;
           break;
-        case "sabado":
-          this.title = "Programación Día Sábado 04 de Noviembre";
+        case 'sabado':
+          this.title = 'Programación Día Sábado 04 de Noviembre';
           charlas = this.$store.getters.talksSabado;
           break;
         default:
-          this.title = "No hay data ups!";
+          this.title = 'No hay data ups!';
           charlas = this.$store.state.noData;
       }
-      /*
-                Modify this line if you want to add a filter
-            */
-      /* P07 */
       return charlas.filter(x => {
-        let current_busqueda = this.busqueda.toLowerCase();
-        let search_speaker =
-          x.speaker != null
-            ? x.speaker.name.toLowerCase().includes(this.busqueda)
-            : false;
-        let search_title = x.name.toLowerCase().includes(current_busqueda);
-        let search_room = x.room.toLowerCase().includes(this.busqueda);
-        let search_category = x.category.toLowerCase().includes(this.busqueda);
-        return search_speaker || search_category || search_title || search_room;
+        /** 
+       * @requires P05 - Filtro en timeline
+       * @description Implementar un filtro de busqueda y que retorne
+       * solo los elementos que se buscan en la vista
+       */
+        return [];
       });
     },
     processData() {
       let charlas = this.fetchData;
       let timeSlot = charlas.map(x => {
-        if (x.category != "TALLERES") {
-          return (
-            x.timeSlot.start.slice(0, 5) + " - " + x.timeSlot.end.slice(0, 5)
-          );
+        if (x.category != 'TALLERES') {
+          return x.timeSlot.start.slice(0, 5) + ' - ' + x.timeSlot.end.slice(0, 5);
         }
       });
       /*
-        Uses spread operator to transform from Set to Array
+        Utiliza el operador de propagación para transformar de conjunto a matriz
       */
       timeSlot = [...new Set(timeSlot)];
       let talksPerTimeSlot = [];

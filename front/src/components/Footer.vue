@@ -2,8 +2,6 @@
   <div class="footer">
     Synaptic
     <i class="fa fa-hand-peace-o" aria-hidden="true"></i>
-    <!-- <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-      <span class="sr-only">Synaptic...</span> -->
   </div>
 </template>
 

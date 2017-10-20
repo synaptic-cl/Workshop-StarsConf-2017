@@ -16,7 +16,8 @@
               <p>{{ setRoom(item) }}</p>
             </div>
             <a href="#0" class="cd-read-more" @click="showModal = true">Más Información</a>
-              <modal v-if="showModal" @close="showModal = false" :information="eventData"></modal>
+            <!-- P01 - Completar información de modal -->
+              <modal v-if="showModal" @close="showModal = false" :information="dataModal"></modal>
             <span class="cd-date">
                 <strong>Hora de Inicio</strong>: {{eventData[0].timeSlot.start.slice(0, 5)}}<br>
                 <strong>Hora de Término</strong>: {{eventData[0].timeSlot.end.slice(0, 5)}}
@@ -36,6 +37,7 @@ export default {
     return {
       showModal: false,
       title: '',
+      dataModal: 'No información',
       badgeStyle: 'badge-danger',
       baseImage: '',
       timeNowImage: null,
@@ -51,41 +53,16 @@ export default {
     isActive(timenow) {
       const timeStart = this.eventData[0].timeSlot.start.slice(0, 5);
       const timeEnd = this.eventData[0].timeSlot.end.slice(0, 5);
-      if (
-        Date.parse('01/01/2011 ' + timenow + ':00') >=
-          Date.parse('01/01/2011 ' + timeStart + ':00') &&
-        Date.parse('01/01/2011 ' + timenow + ':00') <=
-          Date.parse('01/01/2011 ' + timeEnd + ':00')
-      ) {
-        this.title = 'Charla en Curso';
-        this.timeNowImage =
-          'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Actions-rating-icon.png';
-        this.badgeStyle = 'badge-success';
 
-        var nav = $('#' + this.id);
-        if (nav.length && this.scroll) {
-          this.scroll = false;
-          $('html,body').animate(
-            {
-              scrollTop: nav.offset().top
-            },
-            () => {
-              $('html,body').stop(true, true);
-            }
-          );
-        }
-      } else if (
-        Date.parse('01/01/2011 ' + timenow + ':00') <
-        Date.parse('01/01/2011 ' + timeEnd + ':00')
-      ) {
-        this.timeNowImage = null;
-        this.title = 'Proxima Charla';
-        this.badgeStyle = 'badge-warning';
-      } else {
-        this.timeNowImage = null;
-        this.title = 'Charlas Finalizadas';
-        this.badgeStyle = 'badge-danger';
-      }
+      /**
+       * @name P02 - Marca la posición actual en el timeline y P04 - Has un scroll cuando ya no veas el la marca en el timeline
+       * @description En este desafio, se debe implementar la funcionalidad que devuelva cual charla esta finalizada,
+       * en curso o proxima, se debe poder ver reflajado en el html.
+       * 
+       * ademas de eso generar una efecto que permita llevarnos a la charla actual, solo cuando se ingresa la primera ves a la pagina 
+       * (agrega esta imagen a charlas en curso)
+       image  http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Actions-rating-icon.png
+       */
     },
     setRoom: function(item) {
       /* This computed sets the 'pretty' room's name in the card */

@@ -6,9 +6,8 @@
 </template>
 
 <script>
-import TASKS_ALL from '../graphql/AllTalks.gql'
-import TimeLine from './Timeline.vue'
-import { mapActions } from 'vuex'
+import TASKS_ALL from '../graphql/AllTalks.gql';
+import TimeLine from './Timeline.vue';
 
 export default {
   name: 'schedule',
@@ -19,46 +18,51 @@ export default {
   data() {
     return {
       loading: true
-    }
+    };
   },
-  /*
-    This use apollo to query the graphql's API and
-    set the filtered data to the state.
-  */
+  /**
+   * Este componente usa la libreria de Apollo
+   * para realizar las consultas a la API de GraphQL. 
+   * Y además establecer los datos filtrados al estado de la aplicación.
+   * @param query: Schema de la consulta enviada a la API
+   * @param update: Personalizar el valor que se retorna, por ejemplo, si los nombres de los campos no coinciden.
+   * @param result: Al finaliar exitosamente la consulta a la API
+   * @param error: Si nos devuelve un error al ejecutar la consulta.
+   */
   created() {
-    this.$store.dispatch('setTime')
+    this.$store.dispatch('setTime');
   },
   apollo: {
     tasks: {
       query: TASKS_ALL,
       update({ allTalks }) {
-        this.$store.state.talksViernes = allTalks.filter((x) => {
-          return x.timeSlot.date == "2017-11-03";
+        this.$store.state.talksViernes = allTalks.filter(x => {
+          return x.timeSlot.date == '2017-11-03';
         });
-        this.$store.state.talksSabado = allTalks.filter((x) => {
-          return x.timeSlot.date == "2017-11-04";
-        })
+        this.$store.state.talksSabado = allTalks.filter(x => {
+          return x.timeSlot.date == '2017-11-04';
+        });
       },
       result({ data, loader, networkStatus }) {
         this.loading = false;
-        return data
+        return data;
       },
       error(error) {
         this.loading = false;
-        console.error('We\'ve got an error!', error)
+        console.error("We've got an error!", error);
       }
-    },
+    }
   }
-}
+};
 </script>
 
 
 <style>
 /* Import styles from "Vertical-timeline"  */
 
-@import url("https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700");
-@import url("../assets/vertical-timeline/css/reset.css");
-@import url("../assets/vertical-timeline/css/style.css");
+@import url('https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700');
+@import url('../assets/vertical-timeline/css/reset.css');
+@import url('../assets/vertical-timeline/css/style.css');
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

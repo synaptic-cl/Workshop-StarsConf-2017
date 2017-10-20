@@ -1,3 +1,6 @@
+#  /**
+#  * @requires P03 - Agrega la categoria a cada Charla
+#  */
 query allSpeakersQuery {
   allTalks {
     id
@@ -12,7 +15,6 @@ query allSpeakersQuery {
       end
     }
     room
-    category
     isPlaceholder
   }
 }
