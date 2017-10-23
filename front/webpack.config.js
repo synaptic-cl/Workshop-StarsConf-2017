@@ -60,6 +60,9 @@ module.exports = {
       'window.jQuery': 'jquery',
       jQuery: 'jquery',
       Popper: ['popper.js', 'default']
+    }),
+    new webpack.DefinePlugin({
+      "BACKEND_URL": JSON.stringify(process.env.BACKEND_URL)
     })
   ],
   devServer: {
