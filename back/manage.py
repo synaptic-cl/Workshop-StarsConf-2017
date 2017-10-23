@@ -4,6 +4,10 @@ import sys
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "event_schedule.settings")
+    # prevent segmentation fault
+    # https://github.com/docker-library/python/issues/211#issuecomment-338513417
+    import threading
+    threading.stack_size(2 * 1024 * 1024)
     try:
         from django.core.management import execute_from_command_line
     except ImportError:

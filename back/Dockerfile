@@ -1,4 +1,7 @@
-FROM python:3.5.4-alpine
+FROM python:3.6-alpine
+
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONFAULTHANDLER 1
 
 WORKDIR /src
 ADD requirements.txt requirements.txt
