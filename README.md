@@ -2,37 +2,32 @@
 
 ## Instalación
 
+Link de [Descarga](https://docs.docker.com/docker-for-windows/install/).
+
+## Run
+
 ### Windows:
 
-Requisitos: Windows 7 o superior de 64bits
+* Requisitos: Windows 7 o superior de 64bits
+* Descargar docker Installer: https://store.docker.com/editions/community/docker-ce-desktop-windows 
+* Doble click al instalador y seguir los pasos de instalación. Terminada la instalación, aceptar habilitar Hyper-V en caso de no estar habilitado.
+* Reiniciar el equipo, al iniciar, el icono de la ballenita aparecerá en la barra de notificaciones indicando que Docker está en funcionamiento.
+* Abrir Powershell e ir a la raiz del proyecto y ejecutar el siguiente comando:
+	* ```bash docker-compose up```
+* Al finalizar la instalación, docker solicitará permisos para compartir la unidad C.
+* Listo.
 
-Descargar docker Installer: https://store.docker.com/editions/community/docker-ce-desktop-windows 
-
-Doble click al instalador y seguir los pasos de instalación. Terminada la instalación, aceptar habilitar Hyper-V en caso de no estar habilitado.
-
-Reiniciar el equipo, al iniciar, el icono de la ballenita aparecerá en la barra de notificaciones indicando que Docker está en funcionamiento.
-
-Abrir Powershell e ir a la raiz del proyecto y ejecutar el siguiente comando:
-
-```bash
-docker-compose up
-```
-
-Al finalizar la instalación, docker solicitará permisos para compartir la unidad C.
-
-Listo.
-
-### Linux
+### Linux / MacOs
 
 ```bash
 docker-compose up
 ```
 
-### OSX
+Click a <http://localhost:8080>: para la aplicación principal.  
 
-```bash
-docker-compose up
-```
+Click a <http://localhost:8000>: para la API en GraphQL.  
+
+Click a <http://localhost:8000/admin>: para el panel de administración de Django.
 
 ## Entrar al contenedor
 
@@ -46,11 +41,3 @@ docker-compose exec front sh
 ```bash
 docker-compose -f docker-compose.alt.yml up
 ```
-
-Visitar http://localhost:8080 para la aplicación principal.  
-
-Visitar http://localhost:8000 para la API en GraphQL.  
-
-Visitar http://localhost:8000/admin para el panel de administración de Django.
-
-
