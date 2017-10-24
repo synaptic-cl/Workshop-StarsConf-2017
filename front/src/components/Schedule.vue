@@ -6,11 +6,11 @@
 </template>
 
 <script>
-import TASKS_ALL from '../graphql/AllTalks.gql';
-import TimeLine from './Timeline.vue';
+import TASKS_ALL from "../graphql/AllTalks.gql";
+import TimeLine from "./Timeline.vue";
 
 export default {
-  name: 'schedule',
+  name: "schedule",
   components: {
     TimeLine: TimeLine
   },
@@ -30,17 +30,17 @@ export default {
    * @param error: Si nos devuelve un error al ejecutar la consulta.
    */
   created() {
-    this.$store.dispatch('setTime');
+    this.$store.dispatch("setTime");
   },
   apollo: {
     tasks: {
       query: TASKS_ALL,
       update({ allTalks }) {
         this.$store.state.talksViernes = allTalks.filter(x => {
-          return x.timeSlot.date == '2017-11-03';
+          return x.timeSlot.date == "2017-11-03";
         });
         this.$store.state.talksSabado = allTalks.filter(x => {
-          return x.timeSlot.date == '2017-11-04';
+          return x.timeSlot.date == "2017-11-04";
         });
       },
       result({ data, loader, networkStatus }) {
@@ -60,12 +60,12 @@ export default {
 <style>
 /* Import styles from "Vertical-timeline"  */
 
-@import url('https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700');
-@import url('../assets/vertical-timeline/css/reset.css');
-@import url('../assets/vertical-timeline/css/style.css');
+@import url("../assets/vertical-timeline/css/fonts.css");
+@import url("../assets/vertical-timeline/css/reset.css");
+@import url("../assets/vertical-timeline/css/style.css");
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
   text-align: center;
@@ -99,10 +99,10 @@ a {
 
 #cd-timeline::before {
   /* this is the vertical line */
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
-  left: 18px;
+  left: calc (100% - 150px / 2);
   height: 100%;
   width: 4px;
   background: #d7e4ed;
