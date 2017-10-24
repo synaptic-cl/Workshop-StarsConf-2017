@@ -60,7 +60,7 @@ export default {
 <style>
 /* Import styles from "Vertical-timeline"  */
 
-@import url("../assets/css/fonts.css");
+@import url("../assets/vertical-timeline/css/fonts.css");
 @import url("../assets/vertical-timeline/css/reset.css");
 @import url("../assets/vertical-timeline/css/style.css");
 
@@ -102,7 +102,7 @@ a {
   content: "";
   position: absolute;
   top: 0;
-  left: 18px;
+  left: calc (100% - 150px / 2);
   height: 100%;
   width: 4px;
   background: #d7e4ed;
