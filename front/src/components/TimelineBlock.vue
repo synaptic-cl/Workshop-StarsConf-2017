@@ -14,6 +14,7 @@
               {{getTimeStore}}
               <p v-if="item.speaker!=null">Orador: {{item.speaker.name}}</p>
               <p>{{ setRoom(item) }}</p>
+              <!-- <p>Categoria: {{ category }}</p> -->
             </div>
             <a href="#0" class="cd-read-more" @click="showModal = true">Más Información</a>
             <!-- P01 - Completar información de modal -->
@@ -43,6 +44,7 @@ export default {
       timeNowImage: null,
       id: this.eventData[0].id,
       scroll: true
+      // category: this.eventData[0].category != null ? this.eventData[0].category : ''
     };
   },
   components: {
