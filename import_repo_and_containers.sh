@@ -3,6 +3,7 @@ set -o errexit
 set -o nounset
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR
 
 for image in $(find . -name '*.docker')
 do
