@@ -19,7 +19,6 @@
               -#  * @requires P03 - Muestra la Categoria
               -#  */
               -->
-              <p v-if="category">Category: {{categori}}</p>
             </div>
             <a href="#0" class="cd-read-more" @click="showModal = true">Más Información</a>
             <!-- P01 - Completar información del modal -->
@@ -49,7 +48,6 @@ export default {
       timeNowImage: null,
       id: this.eventData[0].id,
       scroll: true
-      // category: this.eventData[0].category != null ? this.eventData[0].category : ''
     };
   },
   components: {
