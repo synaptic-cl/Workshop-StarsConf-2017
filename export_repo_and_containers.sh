@@ -3,6 +3,9 @@ set -o errexit
 set -o nounset
 images=$(docker-compose images | awk '/back|front/ {print $2}')
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+OUTPUT_ZIP=workshop.zip
+
+cd $DIR
 
 mkdir -p export
 
@@ -18,3 +21,6 @@ for image in $images
 do
 	docker save ${image} -o ${image}.docker
 done
+
+rm $OUTPUT_ZIP || true
+zip -rm $OUTPUT_ZIP *

@@ -10,7 +10,9 @@
             </h3>
           </div>
           <div class="modal-body">
-            {{information}}
+            <div :key="item.id" v-for="item in information">
+              <!-- {{information}} -->
+            </div>
           </div>
           <div class="modal-footer">
             default footer

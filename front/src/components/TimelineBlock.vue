@@ -14,10 +14,16 @@
               {{getTimeStore}}
               <p v-if="item.speaker!=null">Orador: {{item.speaker.name}}</p>
               <p>{{ setRoom(item) }}</p>
+              <!--
+              -#  /**
+              -#  * @requires P03 - Muestra la Categoria
+              -#  */
+              -->
+              <p v-if="category">Category: {{categori}}</p>
             </div>
             <a href="#0" class="cd-read-more" @click="showModal = true">Más Información</a>
-            <!-- P01 - Completar información de modal -->
-              <modal v-if="showModal" @close="showModal = false" :information="dataModal"></modal>
+            <!-- P01 - Completar información del modal -->
+              <modal v-if="showModal" @close="showModal = false" :information="eventData"></modal>
             <span class="cd-date">
                 <strong>Hora de Inicio</strong>: {{eventData[0].timeSlot.start.slice(0, 5)}}<br>
                 <strong>Hora de Término</strong>: {{eventData[0].timeSlot.end.slice(0, 5)}}
@@ -43,6 +49,7 @@ export default {
       timeNowImage: null,
       id: this.eventData[0].id,
       scroll: true
+      // category: this.eventData[0].category != null ? this.eventData[0].category : ''
     };
   },
   components: {
@@ -55,11 +62,12 @@ export default {
       const timeEnd = this.eventData[0].timeSlot.end.slice(0, 5);
 
       /**
-       * @name P02 - Marca la posición actual en el timeline y P04 - Has un scroll cuando ya no veas el la marca en el timeline
+       * @name P02 - Marca la posición actual en el timeline.
+       * @name P04 - Has un scroll cuando ya no veas la marca en el timeline.
        * @description En este desafio, se debe implementar la funcionalidad que devuelva cual charla esta finalizada,
        * en curso o proxima, se debe poder ver reflajado en el html.
        * 
-       * ademas de eso generar una efecto que permita llevarnos a la charla actual, solo cuando se ingresa la primera ves a la pagina 
+       * ademas de eso generar una efecto que permita llevarnos a la charla actual, solo cuando se ingresa por primera ves a la pagina 
        * (agrega esta imagen a charlas en curso)
        image  http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Actions-rating-icon.png
        */
