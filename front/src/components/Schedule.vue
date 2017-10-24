@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import TASKS_ALL from '../graphql/AllTalks.gql'
-import TimeLine from './Timeline.vue'
-import { mapActions } from 'vuex'
+import TASKS_ALL from "../graphql/AllTalks.gql";
+import TimeLine from "./Timeline.vue";
+import { mapActions } from "vuex";
 
 export default {
-  name: 'schedule',
+  name: "schedule",
   components: {
     TimeLine: TimeLine
   },
@@ -19,51 +19,51 @@ export default {
   data() {
     return {
       loading: true
-    }
+    };
   },
   /*
     This use apollo to query the graphql's API and
     set the filtered data to the state.
   */
   created() {
-    this.$store.dispatch('setTime')
+    this.$store.dispatch("setTime");
   },
   apollo: {
     tasks: {
       query: TASKS_ALL,
       update({ allTalks }) {
-        this.$store.state.talksViernes = allTalks.filter((x) => {
+        this.$store.state.talksViernes = allTalks.filter(x => {
           return x.timeSlot.date == "2017-11-03";
         });
-        this.$store.state.talksSabado = allTalks.filter((x) => {
+        this.$store.state.talksSabado = allTalks.filter(x => {
           return x.timeSlot.date == "2017-11-04";
-        })
+        });
       },
       result({ data, loader, networkStatus }) {
         this.loading = false;
-        return data
+        return data;
       },
       error(error) {
         this.loading = false;
-        console.error('We\'ve got an error!', error)
+        console.error("We've got an error!", error);
       }
-    },
+    }
   }
-}
+};
 </script>
 
 
 <style>
 /* Import styles from "Vertical-timeline"  */
 
-@import url("https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700");
+@import url("../assets/vertical-timeline/css/fonts.css");
 @import url("../assets/vertical-timeline/css/reset.css");
 @import url("../assets/vertical-timeline/css/style.css");
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  /* -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
@@ -95,10 +95,10 @@ a {
 
 #cd-timeline::before {
   /* this is the vertical line */
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
-  left: 18px;
+  left: calc (100% - 150px / 2);
   height: 100%;
   width: 4px;
   background: #d7e4ed;
