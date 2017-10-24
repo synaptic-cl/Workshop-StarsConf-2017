@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import Modal from './Utils/Modal.vue';
+import Modal from "./Utils/Modal.vue";
 /*
     This component is the card itself, it relies on Sebastiano Guerriero's 
     Vertical-timeline (https://codyhouse.co/gem/vertical-timeline/)
@@ -35,9 +35,9 @@ export default {
   data() {
     return {
       showModal: false,
-      title: '',
-      badgeStyle: 'badge-danger',
-      baseImage: '',
+      title: "",
+      badgeStyle: "badge-danger",
+      baseImage: "",
       timeNowImage: null,
       id: this.eventData[0].id,
       scroll: true
@@ -46,63 +46,63 @@ export default {
   components: {
     Modal: Modal
   },
-  props: ['eventData'],
+  props: ["eventData"],
   methods: {
     isActive(timenow) {
       const timeStart = this.eventData[0].timeSlot.start.slice(0, 5);
       const timeEnd = this.eventData[0].timeSlot.end.slice(0, 5);
       if (
-        Date.parse('01/01/2011 ' + timenow + ':00') >=
-          Date.parse('01/01/2011 ' + timeStart + ':00') &&
-        Date.parse('01/01/2011 ' + timenow + ':00') <=
-          Date.parse('01/01/2011 ' + timeEnd + ':00')
+        Date.parse("01/01/2011 " + timenow + ":00") >=
+          Date.parse("01/01/2011 " + timeStart + ":00") &&
+        Date.parse("01/01/2011 " + timenow + ":00") <=
+          Date.parse("01/01/2011 " + timeEnd + ":00")
       ) {
-        this.title = 'Charla en Curso';
+        this.title = "Charla en Curso";
         this.timeNowImage =
-          'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Actions-rating-icon.png';
-        this.badgeStyle = 'badge-success';
+          "/src/assets/img/categories/Actions-rating-icon.png";
+        this.badgeStyle = "badge-success";
 
-        var nav = $('#' + this.id);
+        var nav = $("#" + this.id);
         if (nav.length && this.scroll) {
           this.scroll = false;
-          $('html,body').animate(
+          $("html,body").animate(
             {
               scrollTop: nav.offset().top
             },
             () => {
-              $('html,body').stop(true, true);
+              $("html,body").stop(true, true);
             }
           );
         }
       } else if (
-        Date.parse('01/01/2011 ' + timenow + ':00') <
-        Date.parse('01/01/2011 ' + timeEnd + ':00')
+        Date.parse("01/01/2011 " + timenow + ":00") <
+        Date.parse("01/01/2011 " + timeEnd + ":00")
       ) {
         this.timeNowImage = null;
-        this.title = 'Proxima Charla';
-        this.badgeStyle = 'badge-warning';
+        this.title = "Proxima Charla";
+        this.badgeStyle = "badge-warning";
       } else {
         this.timeNowImage = null;
-        this.title = 'Charlas Finalizadas';
-        this.badgeStyle = 'badge-danger';
+        this.title = "Charlas Finalizadas";
+        this.badgeStyle = "badge-danger";
       }
     },
     setRoom: function(item) {
       /* This computed sets the 'pretty' room's name in the card */
-      let room = '';
+      let room = "";
       switch (item.room) {
-        case 'DOS':
-          room = 'Sala 2';
+        case "DOS":
+          room = "Sala 2";
           break;
-        case 'PRINCIPAL':
-          room = 'Sala Principal';
+        case "PRINCIPAL":
+          room = "Sala Principal";
           break;
-        case 'Sala Chica':
-          room = 'CHICA';
-        case 'TALLERES':
-          room = 'Sala Talleres';
+        case "Sala Chica":
+          room = "CHICA";
+        case "TALLERES":
+          room = "Sala Talleres";
         default:
-          room = '-';
+          room = "-";
           break;
       }
       return room;
@@ -113,25 +113,20 @@ export default {
       return this.isActive(this.$store.getters.getTimeNow);
     },
     setBaseImage: function() {
-      let baseImage = '';
+      let baseImage = "";
       switch (this.eventData.category) {
-        case 'Web & Mobile':
-          baseImage =
-            'http://smsvaranasi.com/wp-content/uploads/2016/01/Workshop-icon.png';
+        case "Web & Mobile":
+          baseImage = "/src/assets/img/categories/Workshop-icon.png";
           break;
-        case 'Mix':
-          baseImage =
-            'http://icons.iconarchive.com/icons/iconsmind/outline/512/Arrow-Mix-icon.png';
+        case "Mix":
+          baseImage = "/src/assets/img/categories/Arrow-Mix-icon.png";
           break;
-        case 'Developer Tools':
-          baseImage =
-            'http://smsvaranasi.com/wp-content/uploads/2016/01/Workshop-icon.png';
-        case 'Taller':
-          baseImage =
-            'http://smsvaranasi.com/wp-content/uploads/2016/01/Workshop-icon.png';
+        case "Developer Tools":
+          baseImage = "/src/assets/img/categories/Workshop-icon.png";
+        case "Taller":
+          baseImage = "/src/assets/img/categories/Workshop-icon.png";
         default:
-          baseImage =
-            'https://openclipart.org/image/2400px/svg_to_png/22305/pitr-Coffee-cup-icon.png';
+          baseImage = "/src/assets/img/categories/pitr-Coffee-cup-icon.png";
           break;
       }
       return baseImage;
