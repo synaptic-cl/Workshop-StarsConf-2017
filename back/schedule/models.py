@@ -2,9 +2,10 @@ from django.db import models
 
 ROOM_CHOICES = (
     ('', '-----------'),
-    ('dos', 'Sala 2'),
-    ('principal', 'Sala Principal (con traducción)'),
-    ('chica', 'Sala Chica'),
+    ('-', '-'),
+    ('fresno', 'Sala Fresno'),
+    ('magna', 'Sala Magna'),
+    ('matte', 'Sala Matte'),
     ('talleres', 'Sala Talleres'),
 )
 
