@@ -9,7 +9,7 @@
               <hr v-if="eventData.length > 0 && item != eventData[0]">
               <div id="info-state" v-if="eventData.length > 0 && item == eventData[0]">
                 <span class="float-right badge" :class="[badgeStyle]">{{title}}</span>
-              </div>
+              </div><br>
               <h2>{{item.name}}</h2>
               {{getTimeStore}}
               <p v-if="item.speaker!=null">Orador: {{item.speaker.name}}</p>
@@ -91,16 +91,18 @@ export default {
       /* This computed sets the 'pretty' room's name in the card */
       let room = "";
       switch (item.room) {
-        case "DOS":
-          room = "Sala 2";
+        case "FRESNO":
+          room = "Sala Fresno";
           break;
-        case "PRINCIPAL":
-          room = "Sala Principal";
+        case "MATTE":
+          room = "Sala Matte";
           break;
-        case "Sala Chica":
-          room = "CHICA";
+        case "MAGNA":
+          room = "Sala Magna";
+          break;
         case "TALLERES":
           room = "Sala Talleres";
+          break;
         default:
           room = "-";
           break;
