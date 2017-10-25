@@ -1,6 +1,6 @@
 FROM node:6.11-alpine
 
-RUN apk update && apk add vim
+RUN apk update && apk add vim nano
 
 WORKDIR /data
 ADD package.json package.json
