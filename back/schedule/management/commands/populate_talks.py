@@ -19,6 +19,8 @@ class Command(BaseCommand):
                             category=row['category'] or '')
                 if row['room']:
                     talk.room = row['room']
+                else:
+                    talk.room = '-'
 
                 timeslots = TimeSlot.objects \
                                     .filter(date=row['date'], start=row['start']) \
