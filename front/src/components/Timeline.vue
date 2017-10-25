@@ -34,7 +34,7 @@
     En la página, este componente es la Línea en el medio
 */
 
-import TimelineBlock from './TimelineBlock.vue';
+import TimelineBlock from "./TimelineBlock.vue";
 
 export default {
   /*
@@ -44,8 +44,8 @@ export default {
   data() {
     return {
       talks: [],
-      title: '',
-      busqueda: ''
+      title: "",
+      busqueda: ""
     };
   },
   components: {
@@ -61,21 +61,21 @@ export default {
     fetchData() {
       let charlas = [];
       switch (this.$route.params.dia) {
-        case 'viernes':
-          this.title = 'Programación Día Viernes 03 de Noviembre';
+        case "viernes":
+          this.title = "Programación Día Viernes 03 de Noviembre";
           charlas = this.$store.getters.talksViernes;
           break;
-        case 'sabado':
-          this.title = 'Programación Día Sábado 04 de Noviembre';
+        case "sabado":
+          this.title = "Programación Día Sábado 04 de Noviembre";
           charlas = this.$store.getters.talksSabado;
           break;
         default:
-          this.title = 'No hay data ups!';
+          this.title = "No hay data ups!";
           charlas = this.$store.state.noData;
       }
       return charlas.filter(x => {
         /** 
-       * @requires P05 - Filtro en timeline
+       * @name P05 - Filtro en timeline
        * @description Implementar un filtro de busqueda y que retorne
        * solo los elementos que se buscan en la vista
        */
@@ -85,8 +85,10 @@ export default {
     processData() {
       let charlas = this.fetchData;
       let timeSlot = charlas.map(x => {
-        if (x.category != 'TALLERES') {
-          return x.timeSlot.start.slice(0, 5) + ' - ' + x.timeSlot.end.slice(0, 5);
+        if (x.category != "TALLERES") {
+          return (
+            x.timeSlot.start.slice(0, 5) + " - " + x.timeSlot.end.slice(0, 5)
+          );
         }
       });
       /*

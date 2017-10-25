@@ -15,13 +15,11 @@
               <p v-if="item.speaker!=null">Orador: {{item.speaker.name}}</p>
               <p>{{ setRoom(item) }}</p>
               <!--
-              -#  /**
-              -#  * @requires P03 - Muestra la Categoria
-              -#  */
+              @name P03 - Muestra la Categoria
               -->
             </div>
             <a href="#0" class="cd-read-more" @click="showModal = true">Más Información</a>
-            <!-- P01 - Completar información del modal -->
+            <!-- @name P01 - Completar información del modal -->
               <modal v-if="showModal" @close="showModal = false" :information="eventData"></modal>
             <span class="cd-date">
                 <strong>Hora de Inicio</strong>: {{eventData[0].timeSlot.start.slice(0, 5)}}<br>

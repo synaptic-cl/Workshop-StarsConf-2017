@@ -42,6 +42,8 @@ Click a <http://localhost:8000/admin>: para el panel de administración de Djang
 	 ```$ docker-compose up```
 * Al finalizar la instalación, docker solicitará permisos para compartir la unidad C.
 
+> En Windows es importante que en el archivo: docker-compose.yml se modifique "localhost" a la IP de la máquina
+
 ### En Caso de no tener acceso a internet
 
 - Obtén el archivo workshop.zip que contiene los elementos necesarios y descomprímelo.
@@ -51,9 +53,11 @@ Click a <http://localhost:8000/admin>: para el panel de administración de Djang
 $ cd workshop
 ```
 
-Ejecuta la siguiente instrucción para proceder con la instalación
+Ejecuta la siguientes instrucciones para proceder con la instalación
 
 ```bash
+
+$ sh import_import_repo_and_containers.sh
 $ docker-compose -f docker-compose.alt.yml up
 ```
 El contenedor de la aplicación estará entonces funcionando.
