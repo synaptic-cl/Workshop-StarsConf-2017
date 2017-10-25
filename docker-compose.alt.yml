@@ -8,6 +8,8 @@ services:
             - 8000:8000
     front:
         image: workshopstarsconf_front
+        environment:
+            - BACKEND_URL=http://localhost:8000
         volumes:
             - ./front:/src
         ports:
