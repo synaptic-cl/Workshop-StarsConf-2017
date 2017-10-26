@@ -2,12 +2,14 @@ version: '2'
 services:
     back:
         build: back
+        image: workshopstarsconf_back
         volumes:
             - ./back:/src
         ports:
             - 8000:8000
     front:
         build: front
+        image: workshopstarsconf_front
         environment:
             - BACKEND_URL=http://localhost:8000
         volumes:
