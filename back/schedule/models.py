@@ -6,7 +6,7 @@ ROOM_CHOICES = (
     ('fresno', 'Sala Fresno'),
     ('magna', 'Sala Magna'),
     ('matte', 'Sala Matte'),
-    ('talleres', 'Sala Talleres'),
+    ('colorada', 'Sala Colorada'),
 )
 
 

@@ -7,7 +7,7 @@ date|start|name|speaker|room|category
 2017-11-03|11:45|CodificaciÃ3n de Caracteres|José Urzúa|magna
 2017-11-03|11:45|De Chile a Silicon Valley: Mitos, realidades y desafíos|Alvaro Echeverría|fresno
 2017-11-03|11:45|Microservicios con Akka y Scala|Ubaldo Taladriz|matte|Developer Tools
-2017-11-03|11:45|Design Sprints|Continuum|talleres|Taller
+2017-11-03|11:45|Design Sprint: Do learn to validate ideas much faster|Continuum|colorada|Taller
 2017-11-03|12:25|Go Mobile with C#, Visual Studio, and Xamarin|James Montemagno|magna|Web & Mobile
 2017-11-03|12:25|El mejor de los proyectos es abrirnos a nuevos proyectos|Edgardo Ochoa y Angel Valenzuela|fresno
 2017-11-03|12:25|Detectem: enumerando software para vulnerar sistemas web|Claudio Salazar|matte|Developer Tools
@@ -18,7 +18,7 @@ date|start|name|speaker|room|category
 2017-11-03|15:00|Guaranteed Successful Design|Noah Illinsky|magna|UX & Design
 2017-11-03|15:00|¿Sabemos por qué estamos Desarrollando Software?|Agustin Villena|fresno
 2017-11-03|15:00|TDDD: Test Driven Development for Docker|Fausto Castañeda|matte|Cloud & DevOps
-2017-11-03|15:00|8 hours technical onboarding for agile teams|Synaptic|talleres|Taller
+2017-11-03|15:00|8 hours technical onboarding for agile teams|Synaptic|colorada|Taller
 2017-11-03|15:40|Design Sprints en el mundo Enterprise|Ricardo Alfaro|magna|UX & Design
 2017-11-03|15:40|Haciendo visible lo invisible|Ignacio Peña y Axel Abulafia|fresno
 2017-11-03|15:40|Instalación y manejo de kubernetes con Juju|Felipe Reyes|matte|Cloud & DevOps
@@ -37,7 +37,7 @@ date|start|name|speaker|room|category
 2017-11-04|11:30|¿Qué son los robot-advisors?|Andres Marinkovic|magna|Startups & Innovation
 2017-11-04|11:30|Bias, Uncovered: Irrational by Design|Crystal Yan|fresno
 2017-11-04|11:30|Cómo ser Data Scientist y no morir en el intento|Eduardo Graells-Garrido|matte|Data Analysis & Visualization
-2017-11-04|11:30|Platform As A Service|Linets|talleres|Taller
+2017-11-04|11:30|PaaS: Release early, release often, for real|Linets|colorada|Taller
 2017-11-04|12:10|Desmitificando la IA|Javier Minhondo|magna|Startups & Innovation
 2017-11-04|12:10|Una historia de amor|Daniel Atik|fresno
 2017-11-04|12:10|What can we learn from 750 billion GitHub events and 42 TB of code|Felipe Hoffa|matte|Data Analysis & Visualization

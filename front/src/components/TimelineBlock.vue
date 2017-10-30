@@ -81,8 +81,8 @@ export default {
         case "MAGNA":
           room = "Sala Magna";
           break;
-        case "TALLERES":
-          room = "Sala Talleres";
+        case "COLORADA":
+          room = "Sala Colorada";
           break;
         default:
           room = "-";
