@@ -15,7 +15,7 @@
               <p v-if="item.speaker!=null">Orador: {{item.speaker.name}}</p>
               <p>{{ setRoom(item) }}</p>
               <!--
-              @name P03 - Muestra la Categoria
+              @name P03 - Muestra la Categoría
               -->
             </div>
             <a href="#0" class="cd-read-more" @click="showModal = true">Más Información</a>
@@ -59,11 +59,11 @@ export default {
 
       /**
        * @name P02 - Marca la posición actual en el timeline.
-       * @name P04 - Has un scroll cuando ya no veas la marca en el timeline.
-       * @description En este desafio, se debe implementar la funcionalidad que devuelva cual charla esta finalizada,
-       * en curso o proxima, se debe poder ver reflajado en el html.
-       * 
-       * ademas de eso generar una efecto que permita llevarnos a la charla actual, solo cuando se ingresa por primera ves a la pagina 
+       * @name P04 - Haz un scroll cuando ya no veas la marca en el timeline.
+       * @description En este desafío, se debe implementar la funcionalidad que devuelva cuál charla está finalizada,
+       * en curso o próxima, se debe poder ver reflejado en el html.
+       *
+       * Además de eso generar una efecto que permita llevarnos a la charla actual, solo cuando se ingresa por primera vez a la página
        * (agrega esta imagen a charlas en curso)
        image  http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Actions-rating-icon.png
        */
