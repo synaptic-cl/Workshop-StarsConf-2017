@@ -67,6 +67,10 @@ module.exports = {
   ],
   devServer: {
     historyApiFallback: true,
+    // for lack of support of inotify in Windows
+    watchOptions: {
+      poll: true
+    },
     noInfo: true
   },
   performance: {
