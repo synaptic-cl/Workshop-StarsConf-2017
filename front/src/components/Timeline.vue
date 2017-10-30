@@ -70,16 +70,16 @@ export default {
           charlas = this.$store.getters.talksSabado;
           break;
         default:
-          this.title = "No hay data ups!";
+          this.title = "No hay datos, ¡ups!";
           charlas = this.$store.state.noData;
       }
       return charlas.filter(x => {
-        /** 
+        /**
        * @name P05 - Filtro en timeline
-       * @description Implementar un filtro de busqueda y que retorne
-       * solo los elementos que se buscan en la vista
+       * @description Implementar un filtro de búsqueda, que retorne solo los
+       * elementos que se buscan en la vista (tip: usar la variable this.busqueda)
        */
-        return [];
+        return true;
       });
     },
     processData() {
