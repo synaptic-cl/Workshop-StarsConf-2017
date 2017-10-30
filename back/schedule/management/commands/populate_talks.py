@@ -25,7 +25,7 @@ class Command(BaseCommand):
                 timeslots = TimeSlot.objects \
                                     .filter(date=row['date'], start=row['start']) \
                                     .order_by('end')
-                if talk.room == 'talleres':
+                if talk.room == 'colorada':
                     talk.time_slot = timeslots[1]
                 else:
                     talk.time_slot = timeslots[0]
