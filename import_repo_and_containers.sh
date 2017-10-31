@@ -12,8 +12,11 @@ do
 	docker load < $image
 done
 
-git clone workshop_repo.bundle -b master workshop
-
+if command -v git ; then
+	git clone workshop_repo.bundle -b master workshop
+else
+	mkdir -p workshop && unzip workshop_repo.zip -d workshop
+fi
 
 echo -e "${GREEN}"
 echo "Ejecuta lo siguiente para levantar el ambiente:"

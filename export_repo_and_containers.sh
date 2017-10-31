@@ -12,7 +12,7 @@ mkdir -p export
 cp import_repo_and_containers.* export/
 
 # if git is not installed on target
-git archive --format=tar.gz -o export/workshop_repo.tar.gz master
+git archive --format=zip -o export/workshop_repo.zip master
 # else, use git clone <bundle>
 git bundle create export/workshop_repo.bundle master
 

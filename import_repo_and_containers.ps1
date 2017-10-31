@@ -5,7 +5,13 @@ foreach ($image in $images){
 	docker load --input $image
 }
 
-git clone workshop_repo.bundle -b master workshop
+if (Get-Command git -errorAction SilentlyContinue) {
+	git clone workshop_repo.bundle -b master workshop
+} else {
+	Add-Type -AssemblyName System.IO.Compression.FileSystem
+	mkdir workshop
+	[System.IO.Compression.ZipFile]::ExtractToDirectory((Get-Item -Path "workshop_repo.zip" -Verbose).FullName, (Get-Item -Path "workshop" -Verbose).FullName)
+}
 
 Write-Host "Ejecuta lo siguiente para levantar el ambiente:" -ForegroundColor $color
 Write-Host "$ cd workshop" -ForegroundColor $color
