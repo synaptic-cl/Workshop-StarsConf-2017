@@ -63,13 +63,22 @@ $ cd workshop
 - Si estás en Linux o Mac, ejecuta:
 
 ```bash
-sh import_repo_and_containers.sh
+$ sh import_repo_and_containers.sh
 ```
 
 Si estás en Windows:
 
 ```bash
-./import_repo_and_containers.ps1
+$ .\import_repo_and_containers.ps1
+```
+
+Si aparece un error de permisos por la Execution Policy, presionar la tecla Windows + R, y
+ejecutar lo siguiente:
+
+```bash
+$ powershell –ExecutionPolicy Bypass
+# y en la nueva terminal, ejecutar:
+$ .\import_repo_and_containers.ps1
 ```
 
 - Ya ejecutada la importación, ejecuta la siguientes instrucciones para proceder con la instalación:
@@ -81,7 +90,7 @@ $ docker-compose -f docker-compose.alt.yml up -d
 $ docker-compose logs -f
 ```
 
-El contenedor de la aplicación estará entonces funcionando.
+Con eso los contenedores quedarán funcionando.
 
 ### Ingresando al Contenedor
 
