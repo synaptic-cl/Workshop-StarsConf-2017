@@ -22,7 +22,7 @@ CentOS
 Clonar el repositorio y ejecutar
 
 ```bash
-docker-compose up
+docker-compose up -d && docker-compose logs -f
 ```
 
 Click a <http://localhost:8080>: para la aplicación principal.  
@@ -58,7 +58,7 @@ Ejecuta la siguientes instrucciones para proceder con la instalación
 ```bash
 
 $ sh import_import_repo_and_containers.sh
-$ docker-compose -f docker-compose.alt.yml up
+$ docker-compose -f docker-compose.alt.yml up -d && docker-compose logs -f
 ```
 El contenedor de la aplicación estará entonces funcionando.
 
