@@ -58,6 +58,7 @@ Ejecuta la siguientes instrucciones para proceder con la instalación
 ```bash
 
 $ sh import_import_repo_and_containers.sh
+$ cd workshop
 $ docker-compose -f docker-compose.alt.yml up -d && docker-compose logs -f
 ```
 El contenedor de la aplicación estará entonces funcionando.
