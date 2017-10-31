@@ -9,7 +9,7 @@ cd $DIR
 
 mkdir -p export
 
-cp import_repo_and_containers.sh export/
+cp import_repo_and_containers.* export/
 
 # if git is not installed on target
 git archive --format=tar.gz -o export/workshop_repo.tar.gz master
