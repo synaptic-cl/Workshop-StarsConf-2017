@@ -51,7 +51,7 @@ Click a <http://localhost:8000/admin>: para el panel de administración de Djang
 
 Ejecuta la siguientes instrucciones para proceder con la instalación
 
-> $ sh import\_import\_repo\_and\_containers.sh
+> $ sh import\_repo\_and\_containers.sh
 > 
 > $ cd workshop
 > 
