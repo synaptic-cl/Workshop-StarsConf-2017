@@ -19,7 +19,6 @@
               -->
             </div>
             <a href="#0" class="cd-read-more" @click="showModal = true">Más Información</a>
-            <!-- @name P01 - Completar información del modal -->
               <modal v-if="showModal" @close="showModal = false" :information="eventData"></modal>
             <span class="cd-date">
                 <strong>Hora de Inicio</strong>: {{eventData[0].timeSlot.start.slice(0, 5)}}<br>
@@ -59,6 +58,12 @@ export default {
 
       /**
        * @name P02 - Marca la posición actual en el timeline.
+       HINT:
+        usa estas variables:
+          this.title = ""
+          this.timeNowImage = ""
+          this.badgeStyle = ""
+       Si necesitas una imágen, utiliza esta: "/src/assets/img/categories/Actions-rating-icon.png"
        * @name P04 - Haz un scroll cuando ya no veas la marca en el timeline.
        * @description En este desafío, se debe implementar la funcionalidad que devuelva cuál charla está finalizada,
        * en curso o próxima, se debe poder ver reflejado en el html.

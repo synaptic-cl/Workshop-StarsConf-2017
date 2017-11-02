@@ -11,7 +11,7 @@
           </div>
           <div class="modal-body">
             <div :key="item.id" v-for="item in information">
-              <!-- {{information}} -->
+            <!-- @name P01 - Completar información del Modal -->
             </div>
           </div>
           <div class="modal-footer">
@@ -31,7 +31,7 @@ export default {
   data() {
     return {};
   },
-  props: ['information']
+  props: ["information"]
 };
 </script>
 
